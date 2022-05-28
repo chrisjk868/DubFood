@@ -16,6 +16,7 @@
 		D9F10ED82841586400A8E968 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10ED72841586400A8E968 /* OnBoardingViewController.swift */; };
 		D9F10EDA284160C600A8E968 /* RecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10ED9284160C600A8E968 /* RecViewController.swift */; };
 		D9F10EDC284160D600A8E968 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EDB284160D600A8E968 /* NewsViewController.swift */; };
+		D9F10EDE2842EC3300A8E968 /* YelpBusinessSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EDD2842EC3300A8E968 /* YelpBusinessSearch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D9F10ED72841586400A8E968 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		D9F10ED9284160C600A8E968 /* RecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecViewController.swift; sourceTree = "<group>"; };
 		D9F10EDB284160D600A8E968 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		D9F10EDD2842EC3300A8E968 /* YelpBusinessSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpBusinessSearch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				D9F10EDB284160D600A8E968 /* NewsViewController.swift */,
 				D9F10ED9284160C600A8E968 /* RecViewController.swift */,
 				D9F10EC5283DB7AD00A8E968 /* Main.storyboard */,
+				D9F10EDD2842EC3300A8E968 /* YelpBusinessSearch.swift */,
 				D9F10EC8283DB7AE00A8E968 /* Assets.xcassets */,
 				D9F10ECA283DB7AE00A8E968 /* LaunchScreen.storyboard */,
 				D9F10ECD283DB7AE00A8E968 /* Info.plist */,
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9F10EDE2842EC3300A8E968 /* YelpBusinessSearch.swift in Sources */,
 				D9F10EC4283DB7AD00A8E968 /* ViewController.swift in Sources */,
 				D9F10EDA284160C600A8E968 /* RecViewController.swift in Sources */,
 				D9F10EC0283DB7AD00A8E968 /* AppDelegate.swift in Sources */,
