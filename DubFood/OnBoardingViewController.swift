@@ -9,13 +9,19 @@ import UIKit
 
 class OnBoardingViewController: UIViewController {
 
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var university: UIPickerView!
+    @IBOutlet weak var submit: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func submitBtnClick(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 

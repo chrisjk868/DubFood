@@ -15,7 +15,11 @@ class RecViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+  
+    @IBAction func buttonOnClick(_ sender: Any) {
+        print("hello world")
+    }
+    
     /*
     // MARK: - Navigation
 
