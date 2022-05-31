@@ -6,53 +6,32 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ViewController: UIViewController {
     
     let url = "https://api.yelp.com/v3"
     let clientId = "PgR7zDES_S3gZbpGOzvF2w"
     let apiKey = "QvwuJuZIJFcStTAh3Cm44PDXrSV-yz402FVhGzwCZIb_8y5ieuEVTi5kuDsoY4O-mcJLWzTrg7k023x7jV4mgxBDZBW9JwoyB2UfaJRWZYpDMpohOcKRBe215guMYnYx"
-    
-    var businesses = []
+    let business_endpoint = "/businesses/search"
+    var businesses : Any? = nil
+    var location = (0.0, 0.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        // Endpoints
-        let business_endpoint = "/businesses/search"
-        
         // Calling the Yelp API Business Endpoint
-        var lat_long = "?latitude=47.602420&longitude=-122.392820"
-        var location = "?location=Seattle"
-        var request = URLRequest(url: URL(string: url + business_endpoint + location)!)
-        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-        request.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!)
-                print(json)
-            } catch {
-                print(error)
-                return
-            }
-            
-        }.resume()
-        
+        makeRequest(coordinates: self.location)
     }
 
-    func makeRequest(){
-        let appSecret = "QvwuJuZIJFcStTAh3Cm44PDXrSV-yz402FVhGzwCZIb_8y5ieuEVTi5kuDsoY4O-mcJLWzTrg7k023x7jV4mgxBDZBW9JwoyB2UfaJRWZYpDMpohOcKRBe215guMYnYx"
-        let test = YelpBusinessSearch(latitude: "47.655548", longitude: "-122.303200", radius: "", categories: [""])
-        var url : String = test.searchByLatLong()
-        
+    func makeRequest(coordinates : (Double, Double)) {
+        print("started making requests")
+        let test = YelpBusinessSearch(latitude: String(coordinates.0), longitude: String(coordinates.1), radius: "", categories: [""])
+        let url : String = test.searchByLatLong()
+        print(url)
         var request = URLRequest(url: URL(string: url)!)
-        request.setValue("Bearer \(appSecret)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
         
         var businessList: [String] = []
@@ -66,18 +45,15 @@ class ViewController: UIViewController {
                 let data = try JSONSerialization.jsonObject(with: data) as! NSDictionary
         
                 let value = data.value(forKey: "businesses") as! NSArray
-        
-                //let location = value[0] as! NSDictionary
                 
                 for i in value{
                     let location = i as! NSDictionary
-                    
                     businessList.append(location.value(forKey: "id")! as! String)
                 }
                 
                 DispatchQueue.main.async {
                     self.businesses = businessList
-                    print(self.businesses)
+                    print("businesses: \(self.businesses!)")
                 }
             } catch {
                 print("error: \(error)")

@@ -66,14 +66,14 @@
 			children = (
 				D9F10EBF283DB7AD00A8E968 /* AppDelegate.swift */,
 				D9F10EC1283DB7AD00A8E968 /* SceneDelegate.swift */,
-				D9F10EC3283DB7AD00A8E968 /* ViewController.swift */,
 				D9F10ED72841586400A8E968 /* OnBoardingViewController.swift */,
+				D9F10EC3283DB7AD00A8E968 /* ViewController.swift */,
 				D9F10EDB284160D600A8E968 /* NewsViewController.swift */,
 				D9F10ED9284160C600A8E968 /* RecViewController.swift */,
-				D9F10EC5283DB7AD00A8E968 /* Main.storyboard */,
 				D9F10EDD2842EC3300A8E968 /* YelpBusinessSearch.swift */,
-				D9F10EC8283DB7AE00A8E968 /* Assets.xcassets */,
+				D9F10EC5283DB7AD00A8E968 /* Main.storyboard */,
 				D9F10ECA283DB7AE00A8E968 /* LaunchScreen.storyboard */,
+				D9F10EC8283DB7AE00A8E968 /* Assets.xcassets */,
 				D9F10ECD283DB7AE00A8E968 /* Info.plist */,
 			);
 			path = DubFood;
