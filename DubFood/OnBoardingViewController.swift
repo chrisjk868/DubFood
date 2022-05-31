@@ -24,6 +24,10 @@ class OnBoardingViewController: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view.
         
         // Get User Location
+        
+        //HOW TO INITIATE THE DATABASE
+        let database = FirebaseInterface()
+        
         let location = CLLocationManager()
         location.delegate = self
         
