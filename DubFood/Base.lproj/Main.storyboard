@@ -325,22 +325,95 @@
             </objects>
             <point key="canvasLocation" x="2742.0289855072465" y="443.97321428571428"/>
         </scene>
-        <!--Item-->
+        <!--UserProfile-->
         <scene sceneID="BAK-nu-QF9">
             <objects>
-                <viewController id="oer-BJ-UJb" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserProfile" title="UserProfile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="oer-BJ-UJb" customClass="UserProfileViewController" customModule="DubFood" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iOK-wo-WsA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dO-Yb-uJh">
+                                <rect key="frame" x="20" y="44" width="136" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Username: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B5g-6j-Qvl">
+                                <rect key="frame" x="20" y="247" width="384" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20.5" id="6F8-Cy-eC4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username Placeholder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeH-rP-L7I">
+                                <rect key="frame" x="124" y="247" width="173" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mS1-PK-Wqm">
+                                <rect key="frame" x="20" y="302" width="384" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20.5" id="7tl-RD-fH3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="University: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aE-XR-4oB">
+                                <rect key="frame" x="20" y="351" width="384" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20.5" id="O75-nN-vST"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email Placeholder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNY-vL-gFY">
+                                <rect key="frame" x="80" y="302" width="135" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Univesity Placeholder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kO-NT-xBf">
+                                <rect key="frame" x="124" y="350" width="165" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DBf-IZ-RZe">
+                                <rect key="frame" x="86" y="100" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="3cS-8H-FCO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="B5g-6j-Qvl" firstAttribute="trailing" secondItem="iOK-wo-WsA" secondAttribute="trailingMargin" id="biC-aB-Zy6"/>
+                            <constraint firstItem="B5g-6j-Qvl" firstAttribute="top" secondItem="4dO-Yb-uJh" secondAttribute="bottom" constant="66" id="feg-xK-CKB"/>
+                            <constraint firstItem="4dO-Yb-uJh" firstAttribute="leading" secondItem="iOK-wo-WsA" secondAttribute="leadingMargin" id="gMO-jT-v5L"/>
+                            <constraint firstItem="3cS-8H-FCO" firstAttribute="bottom" secondItem="B5g-6j-Qvl" secondAttribute="bottom" constant="652.5" id="kRC-ND-NLS"/>
+                            <constraint firstItem="B5g-6j-Qvl" firstAttribute="leading" secondItem="3cS-8H-FCO" secondAttribute="leading" constant="10" id="tHx-Ei-9Vv"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="hSi-1C-vSM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="mNY-vL-gFY" id="3Pc-Oe-GeW"/>
+                        <outlet property="profileImage" destination="DBf-IZ-RZe" id="mNV-TX-PXC"/>
+                        <outlet property="universityLabel" destination="1kO-NT-xBf" id="K28-6g-Dd9"/>
+                        <outlet property="usernameLabel" destination="LeH-rP-L7I" id="ILi-HB-bzS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oZe-UD-4Zx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1832" y="838"/>
+            <point key="canvasLocation" x="1831.8840579710147" y="837.72321428571422"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="5ZG-g5-n69">
