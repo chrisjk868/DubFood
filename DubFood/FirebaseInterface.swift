@@ -29,7 +29,6 @@ class FirebaseInterface {
     }
     
     
-    //TODO, need to add parameter that takes NSObject
     @objc func addNewEntry(object: [String: String], name: String){
         database.child(name).setValue(object)
     }
