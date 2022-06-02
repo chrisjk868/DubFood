@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		850A5CE2284690C700065BD3 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A5CE1284690C700065BD3 /* UserProfileViewController.swift */; };
 		850A5CE42846913200065BD3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A5CE32846913200065BD3 /* User.swift */; };
+		D9508DE228484498003788F5 /* BusinessDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9508DE028484498003788F5 /* BusinessDecode.swift */; };
+		D9508DE328484498003788F5 /* BusinessDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9508DE128484498003788F5 /* BusinessDetailsViewController.swift */; };
 		D9F10EC0283DB7AD00A8E968 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EBF283DB7AD00A8E968 /* AppDelegate.swift */; };
 		D9F10EC2283DB7AD00A8E968 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EC1283DB7AD00A8E968 /* SceneDelegate.swift */; };
 		D9F10EC4283DB7AD00A8E968 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EC3283DB7AD00A8E968 /* ViewController.swift */; };
@@ -24,6 +26,8 @@
 /* Begin PBXFileReference section */
 		850A5CE1284690C700065BD3 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		850A5CE32846913200065BD3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D9508DE028484498003788F5 /* BusinessDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusinessDecode.swift; path = ../../BusinessDecode.swift; sourceTree = "<group>"; };
+		D9508DE128484498003788F5 /* BusinessDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusinessDetailsViewController.swift; path = ../../BusinessDetailsViewController.swift; sourceTree = "<group>"; };
 		D9F10EBC283DB7AD00A8E968 /* DubFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DubFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F10EBF283DB7AD00A8E968 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9F10EC1283DB7AD00A8E968 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,9 +79,9 @@
 				D9F10EC3283DB7AD00A8E968 /* ViewController.swift */,
 				D9F10EDB284160D600A8E968 /* NewsViewController.swift */,
 				D9F10ED9284160C600A8E968 /* RecViewController.swift */,
-				D9234F002846B65A0041BE18 /* BusinessDetailsViewController.swift */,
-				D9234F022846BE780041BE18 /* BusinessDecode.swift */,
 				D9F10EDD2842EC3300A8E968 /* YelpBusinessSearch.swift */,
+				D9508DE028484498003788F5 /* BusinessDecode.swift */,
+				D9508DE128484498003788F5 /* BusinessDetailsViewController.swift */,
 				850A5CE32846913200065BD3 /* User.swift */,
 				D9F10EC5283DB7AD00A8E968 /* Main.storyboard */,
 				D9F10ECA283DB7AE00A8E968 /* LaunchScreen.storyboard */,
@@ -165,10 +169,10 @@
 				D9F10EC0283DB7AD00A8E968 /* AppDelegate.swift in Sources */,
 				850A5CE42846913200065BD3 /* User.swift in Sources */,
 				D9F10EDC284160D600A8E968 /* NewsViewController.swift in Sources */,
+				D9508DE328484498003788F5 /* BusinessDetailsViewController.swift in Sources */,
+				D9508DE228484498003788F5 /* BusinessDecode.swift in Sources */,
 				D9F10EC2283DB7AD00A8E968 /* SceneDelegate.swift in Sources */,
 				D9F10ED82841586400A8E968 /* OnBoardingViewController.swift in Sources */,
-				D9234F032846BE780041BE18 /* BusinessDecode.swift in Sources */,
-				D9234F012846B65A0041BE18 /* BusinessDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
