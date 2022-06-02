@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D9234F012846B65A0041BE18 /* BusinessDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9234F002846B65A0041BE18 /* BusinessDetailsViewController.swift */; };
-		D9234F032846BE780041BE18 /* BusinessDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9234F022846BE780041BE18 /* BusinessDecode.swift */; };
+		850A5CE2284690C700065BD3 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A5CE1284690C700065BD3 /* UserProfileViewController.swift */; };
+		850A5CE42846913200065BD3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A5CE32846913200065BD3 /* User.swift */; };
 		D9F10EC0283DB7AD00A8E968 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EBF283DB7AD00A8E968 /* AppDelegate.swift */; };
 		D9F10EC2283DB7AD00A8E968 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EC1283DB7AD00A8E968 /* SceneDelegate.swift */; };
 		D9F10EC4283DB7AD00A8E968 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EC3283DB7AD00A8E968 /* ViewController.swift */; };
@@ -22,8 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D9234F002846B65A0041BE18 /* BusinessDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessDetailsViewController.swift; sourceTree = "<group>"; };
-		D9234F022846BE780041BE18 /* BusinessDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessDecode.swift; sourceTree = "<group>"; };
+		850A5CE1284690C700065BD3 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		850A5CE32846913200065BD3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D9F10EBC283DB7AD00A8E968 /* DubFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DubFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F10EBF283DB7AD00A8E968 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9F10EC1283DB7AD00A8E968 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +68,7 @@
 		D9F10EBE283DB7AD00A8E968 /* DubFood */ = {
 			isa = PBXGroup;
 			children = (
+				850A5CE1284690C700065BD3 /* UserProfileViewController.swift */,
 				D9F10EBF283DB7AD00A8E968 /* AppDelegate.swift */,
 				D9F10EC1283DB7AD00A8E968 /* SceneDelegate.swift */,
 				D9F10ED72841586400A8E968 /* OnBoardingViewController.swift */,
@@ -77,6 +78,7 @@
 				D9234F002846B65A0041BE18 /* BusinessDetailsViewController.swift */,
 				D9234F022846BE780041BE18 /* BusinessDecode.swift */,
 				D9F10EDD2842EC3300A8E968 /* YelpBusinessSearch.swift */,
+				850A5CE32846913200065BD3 /* User.swift */,
 				D9F10EC5283DB7AD00A8E968 /* Main.storyboard */,
 				D9F10ECA283DB7AE00A8E968 /* LaunchScreen.storyboard */,
 				D9F10EC8283DB7AE00A8E968 /* Assets.xcassets */,
@@ -157,9 +159,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9F10EDE2842EC3300A8E968 /* YelpBusinessSearch.swift in Sources */,
+				850A5CE2284690C700065BD3 /* UserProfileViewController.swift in Sources */,
 				D9F10EC4283DB7AD00A8E968 /* ViewController.swift in Sources */,
 				D9F10EDA284160C600A8E968 /* RecViewController.swift in Sources */,
 				D9F10EC0283DB7AD00A8E968 /* AppDelegate.swift in Sources */,
+				850A5CE42846913200065BD3 /* User.swift in Sources */,
 				D9F10EDC284160D600A8E968 /* NewsViewController.swift in Sources */,
 				D9F10EC2283DB7AD00A8E968 /* SceneDelegate.swift in Sources */,
 				D9F10ED82841586400A8E968 /* OnBoardingViewController.swift in Sources */,
