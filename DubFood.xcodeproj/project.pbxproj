@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		850A5CE2284690C700065BD3 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A5CE1284690C700065BD3 /* UserProfileViewController.swift */; };
 		850A5CE42846913200065BD3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A5CE32846913200065BD3 /* User.swift */; };
-		D9508DE228484498003788F5 /* BusinessDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9508DE028484498003788F5 /* BusinessDecode.swift */; };
-		D9508DE328484498003788F5 /* BusinessDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9508DE128484498003788F5 /* BusinessDetailsViewController.swift */; };
+		9DF6BEAC284951D500DD1D55 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6BEAB284951D500DD1D55 /* NewPostViewController.swift */; };
+		9DF6BEAE2849542800DD1D55 /* BusinessDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6BEAD2849542800DD1D55 /* BusinessDetailsViewController.swift */; };
+		9DF6BEB02849543C00DD1D55 /* BusinessDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6BEAF2849543C00DD1D55 /* BusinessDecode.swift */; };
 		D9508DE528485D3E003788F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9508DE428485D3E003788F5 /* GoogleService-Info.plist */; };
 		D9F10EC0283DB7AD00A8E968 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EBF283DB7AD00A8E968 /* AppDelegate.swift */; };
 		D9F10EC2283DB7AD00A8E968 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EC1283DB7AD00A8E968 /* SceneDelegate.swift */; };
@@ -30,8 +31,9 @@
 /* Begin PBXFileReference section */
 		850A5CE1284690C700065BD3 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		850A5CE32846913200065BD3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		D9508DE028484498003788F5 /* BusinessDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusinessDecode.swift; path = ../../BusinessDecode.swift; sourceTree = "<group>"; };
-		D9508DE128484498003788F5 /* BusinessDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusinessDetailsViewController.swift; path = ../../BusinessDetailsViewController.swift; sourceTree = "<group>"; };
+		9DF6BEAB284951D500DD1D55 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		9DF6BEAD2849542800DD1D55 /* BusinessDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDetailsViewController.swift; sourceTree = "<group>"; };
+		9DF6BEAF2849543C00DD1D55 /* BusinessDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDecode.swift; sourceTree = "<group>"; };
 		D9508DE428485D3E003788F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D9F10EBC283DB7AD00A8E968 /* DubFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DubFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F10EBF283DB7AD00A8E968 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,16 +83,17 @@
 			isa = PBXGroup;
 			children = (
 				E36F85062846B18500F18C4C /* FirebaseInterface.swift */,
-				850A5CE1284690C700065BD3 /* UserProfileViewController.swift */,
 				D9F10EBF283DB7AD00A8E968 /* AppDelegate.swift */,
 				D9F10EC1283DB7AD00A8E968 /* SceneDelegate.swift */,
-				D9F10ED72841586400A8E968 /* OnBoardingViewController.swift */,
 				D9F10EC3283DB7AD00A8E968 /* ViewController.swift */,
+				D9F10ED72841586400A8E968 /* OnBoardingViewController.swift */,
+				850A5CE1284690C700065BD3 /* UserProfileViewController.swift */,
 				D9F10EDB284160D600A8E968 /* NewsViewController.swift */,
 				D9F10ED9284160C600A8E968 /* RecViewController.swift */,
+				9DF6BEAD2849542800DD1D55 /* BusinessDetailsViewController.swift */,
+				9DF6BEAB284951D500DD1D55 /* NewPostViewController.swift */,
 				D9F10EDD2842EC3300A8E968 /* YelpBusinessSearch.swift */,
-				D9508DE028484498003788F5 /* BusinessDecode.swift */,
-				D9508DE128484498003788F5 /* BusinessDetailsViewController.swift */,
+				9DF6BEAF2849543C00DD1D55 /* BusinessDecode.swift */,
 				850A5CE32846913200065BD3 /* User.swift */,
 				D9F10EC5283DB7AD00A8E968 /* Main.storyboard */,
 				D9F10ECA283DB7AE00A8E968 /* LaunchScreen.storyboard */,
@@ -181,15 +184,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9F10EDE2842EC3300A8E968 /* YelpBusinessSearch.swift in Sources */,
+				9DF6BEAC284951D500DD1D55 /* NewPostViewController.swift in Sources */,
 				850A5CE2284690C700065BD3 /* UserProfileViewController.swift in Sources */,
 				D9F10EC4283DB7AD00A8E968 /* ViewController.swift in Sources */,
 				D9F10EDA284160C600A8E968 /* RecViewController.swift in Sources */,
+				9DF6BEAE2849542800DD1D55 /* BusinessDetailsViewController.swift in Sources */,
 				D9F10EC0283DB7AD00A8E968 /* AppDelegate.swift in Sources */,
 				850A5CE42846913200065BD3 /* User.swift in Sources */,
 				E36F85072846B18500F18C4C /* FirebaseInterface.swift in Sources */,
+				9DF6BEB02849543C00DD1D55 /* BusinessDecode.swift in Sources */,
 				D9F10EDC284160D600A8E968 /* NewsViewController.swift in Sources */,
-				D9508DE328484498003788F5 /* BusinessDetailsViewController.swift in Sources */,
-				D9508DE228484498003788F5 /* BusinessDecode.swift in Sources */,
 				D9F10EC2283DB7AD00A8E968 /* SceneDelegate.swift in Sources */,
 				D9F10ED82841586400A8E968 /* OnBoardingViewController.swift in Sources */,
 			);
