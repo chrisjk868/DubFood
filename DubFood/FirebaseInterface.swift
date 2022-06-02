@@ -13,24 +13,37 @@ class FirebaseInterface {
     
     private let database: DatabaseReference
 
+    private let defaultResaurant: [String: Any]
+    
     init(){
         FirebaseApp.configure()
         
         self.database = Database.database().reference()
         
-        let object: [String: String] = [
-            "name": "test123",
-            "class": "test123"
+        self.defaultResaurant = [
+            "restaurantName": "sampleName",
+            "yelpStarRating": 1,
+            "location": "seattle",
+            "description" : "sampleDescription",
+            "image": "sampleURL",
+            "posts": [["userName": "testUserName", "postContent" : "sampleContent"], ["userName2": "testUserName", "postContentsdasd" : "sampleCasdasdontent"]],
+            "businessID": "sampleID"
         ]
-        
-        addNewEntry(object: object, name: "testing")
-        
-        readEntry("testing")
     }
     
-    
-    @objc func addNewEntry(object: [String: String], name: String){
-        database.child(name).setValue(object)
+    @objc func addNewRestaurant(restaurantName: String, yelpStarRating: Int, location: String, description: String, imageURL: String, image: String, posts: [[String: String]], businessID: String){
+        
+        let restaurant: [String: Any] = [
+            "restaurantName": restaurantName,
+            "yelpStarRating": yelpStarRating,
+            "location": location,
+            "description" : description,
+            "image": imageURL,
+            "posts": posts,
+            "businessID": businessID
+        ]
+        
+        database.child(businessID).setValue(restaurant)
     }
     
     func readEntry(_ Key: String){
