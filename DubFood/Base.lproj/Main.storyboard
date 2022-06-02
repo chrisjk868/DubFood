@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lF2-Jp-tcJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zpZ-rD-lTN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -613,85 +613,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gmz-gH-r5b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-742.02898550724649" y="829.6875"/>
-        </scene>
-        <!--New Post View Controller-->
-        <scene sceneID="wmJ-WU-8UI">
-            <objects>
-                <viewController storyboardIdentifier="newPostVC" title="New Post View Controller" id="lF2-Jp-tcJ" customClass="NewPostViewController" customModule="DubFood" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ukb-Gb-hxy">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a New Post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0d-OB-doh">
-                                <rect key="frame" x="20" y="49" width="213" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Restaurant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuH-yt-aUD">
-                                <rect key="frame" x="40" y="114" width="125.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P66-HB-zoc">
-                                <rect key="frame" x="40" y="143" width="334" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfP-a3-OYs">
-                                <rect key="frame" x="40" y="212" width="104" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T6c-lr-of5">
-                                <rect key="frame" x="40" y="241" width="334" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="e09-gJ-ecD"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pww-2Y-brP">
-                                <rect key="frame" x="112.5" y="466" width="69" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Cancel"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIF-ng-aJo">
-                                <rect key="frame" x="240.5" y="466" width="53" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Post"/>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="job-Hy-RDi"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="P66-HB-zoc" firstAttribute="top" secondItem="wuH-yt-aUD" secondAttribute="bottom" constant="8" symbolic="YES" id="66D-LD-GcZ"/>
-                            <constraint firstItem="T6c-lr-of5" firstAttribute="top" secondItem="jfP-a3-OYs" secondAttribute="bottom" constant="8" symbolic="YES" id="6Ma-3f-X6q"/>
-                            <constraint firstItem="job-Hy-RDi" firstAttribute="trailing" secondItem="P66-HB-zoc" secondAttribute="trailing" constant="40" id="9ff-Mj-xGK"/>
-                            <constraint firstItem="job-Hy-RDi" firstAttribute="trailing" secondItem="T6c-lr-of5" secondAttribute="trailing" constant="40" id="BVG-9b-W0c"/>
-                            <constraint firstItem="wuH-yt-aUD" firstAttribute="top" secondItem="F0d-OB-doh" secondAttribute="bottom" constant="35" id="D3V-vH-z4a"/>
-                            <constraint firstItem="jfP-a3-OYs" firstAttribute="top" secondItem="P66-HB-zoc" secondAttribute="bottom" constant="35" id="LNj-rT-6wV"/>
-                            <constraint firstItem="Pww-2Y-brP" firstAttribute="centerX" secondItem="job-Hy-RDi" secondAttribute="centerX" constant="-60" id="WDg-Jy-Mcy"/>
-                            <constraint firstItem="F0d-OB-doh" firstAttribute="top" secondItem="job-Hy-RDi" secondAttribute="top" constant="5" id="WpM-ar-H90"/>
-                            <constraint firstItem="pIF-ng-aJo" firstAttribute="top" secondItem="T6c-lr-of5" secondAttribute="bottom" constant="25" id="ZB7-HL-uYA"/>
-                            <constraint firstItem="jfP-a3-OYs" firstAttribute="leading" secondItem="job-Hy-RDi" secondAttribute="leading" constant="40" id="eHf-1u-o1u"/>
-                            <constraint firstItem="P66-HB-zoc" firstAttribute="leading" secondItem="job-Hy-RDi" secondAttribute="leading" constant="40" id="fbJ-Eo-aya"/>
-                            <constraint firstItem="F0d-OB-doh" firstAttribute="leading" secondItem="job-Hy-RDi" secondAttribute="leading" constant="20" id="mUk-UY-bzP"/>
-                            <constraint firstItem="wuH-yt-aUD" firstAttribute="leading" secondItem="job-Hy-RDi" secondAttribute="leading" constant="40" id="q22-ZO-JQg"/>
-                            <constraint firstItem="pIF-ng-aJo" firstAttribute="centerX" secondItem="job-Hy-RDi" secondAttribute="centerX" constant="60" id="rDw-eQ-ObA"/>
-                            <constraint firstItem="Pww-2Y-brP" firstAttribute="top" secondItem="T6c-lr-of5" secondAttribute="bottom" constant="25" id="veN-el-0S5"/>
-                            <constraint firstItem="T6c-lr-of5" firstAttribute="leading" secondItem="job-Hy-RDi" secondAttribute="leading" constant="40" id="xhl-Qf-wau"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="postContentTxtField" destination="T6c-lr-of5" id="PDU-GD-H9C"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qPn-ea-eIO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4376.811594202899" y="81.696428571428569"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Jk2-d3-hy2">
