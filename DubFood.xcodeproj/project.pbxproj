@@ -11,6 +11,7 @@
 		850A5CE42846913200065BD3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A5CE32846913200065BD3 /* User.swift */; };
 		D9508DE228484498003788F5 /* BusinessDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9508DE028484498003788F5 /* BusinessDecode.swift */; };
 		D9508DE328484498003788F5 /* BusinessDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9508DE128484498003788F5 /* BusinessDetailsViewController.swift */; };
+		D9508DE528485D3E003788F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9508DE428485D3E003788F5 /* GoogleService-Info.plist */; };
 		D9F10EC0283DB7AD00A8E968 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EBF283DB7AD00A8E968 /* AppDelegate.swift */; };
 		D9F10EC2283DB7AD00A8E968 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EC1283DB7AD00A8E968 /* SceneDelegate.swift */; };
 		D9F10EC4283DB7AD00A8E968 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EC3283DB7AD00A8E968 /* ViewController.swift */; };
@@ -24,7 +25,6 @@
 		E36F85032846AF1F00F18C4C /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E36F85022846AF1F00F18C4C /* FirebaseDatabaseSwift */; };
 		E36F85052846AF1F00F18C4C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E36F85042846AF1F00F18C4C /* FirebaseFirestoreSwift */; };
 		E36F85072846B18500F18C4C /* FirebaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36F85062846B18500F18C4C /* FirebaseInterface.swift */; };
-		E36F850B2846BDA700F18C4C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E36F850A2846BDA700F18C4C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +32,7 @@
 		850A5CE32846913200065BD3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D9508DE028484498003788F5 /* BusinessDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusinessDecode.swift; path = ../../BusinessDecode.swift; sourceTree = "<group>"; };
 		D9508DE128484498003788F5 /* BusinessDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BusinessDetailsViewController.swift; path = ../../BusinessDetailsViewController.swift; sourceTree = "<group>"; };
+		D9508DE428485D3E003788F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D9F10EBC283DB7AD00A8E968 /* DubFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DubFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F10EBF283DB7AD00A8E968 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9F10EC1283DB7AD00A8E968 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,7 +46,6 @@
 		D9F10EDB284160D600A8E968 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		D9F10EDD2842EC3300A8E968 /* YelpBusinessSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpBusinessSearch.swift; sourceTree = "<group>"; };
 		E36F85062846B18500F18C4C /* FirebaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseInterface.swift; sourceTree = "<group>"; };
-		E36F850A2846BDA700F18C4C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +80,7 @@
 		D9F10EBE283DB7AD00A8E968 /* DubFood */ = {
 			isa = PBXGroup;
 			children = (
+				E36F85062846B18500F18C4C /* FirebaseInterface.swift */,
 				850A5CE1284690C700065BD3 /* UserProfileViewController.swift */,
 				D9F10EBF283DB7AD00A8E968 /* AppDelegate.swift */,
 				D9F10EC1283DB7AD00A8E968 /* SceneDelegate.swift */,
@@ -94,9 +95,8 @@
 				D9F10EC5283DB7AD00A8E968 /* Main.storyboard */,
 				D9F10ECA283DB7AE00A8E968 /* LaunchScreen.storyboard */,
 				D9F10EC8283DB7AE00A8E968 /* Assets.xcassets */,
-				E36F850A2846BDA700F18C4C /* GoogleService-Info.plist */,
+				D9508DE428485D3E003788F5 /* GoogleService-Info.plist */,
 				D9F10ECD283DB7AE00A8E968 /* Info.plist */,
-				E36F85062846B18500F18C4C /* FirebaseInterface.swift */,
 			);
 			path = DubFood;
 			sourceTree = "<group>";
@@ -167,7 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9F10ECC283DB7AE00A8E968 /* LaunchScreen.storyboard in Resources */,
-				E36F850B2846BDA700F18C4C /* GoogleService-Info.plist in Resources */,
+				D9508DE528485D3E003788F5 /* GoogleService-Info.plist in Resources */,
 				D9F10EC9283DB7AE00A8E968 /* Assets.xcassets in Resources */,
 				D9F10EC7283DB7AD00A8E968 /* Main.storyboard in Resources */,
 			);
