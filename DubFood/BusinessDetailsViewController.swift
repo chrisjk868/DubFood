@@ -14,6 +14,7 @@ class BusinessDetailsViewController: UIViewController {
     @IBOutlet weak var descr: UILabel!
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var restaurant_name: UILabel!
+    @IBOutlet weak var add_comment: UIImageView!
     
     var business_id : String? =  "WavvLdfdP6g8aZTtbBQHTw" // replace with business id here
     let clientId = "PgR7zDES_S3gZbpGOzvF2w"
