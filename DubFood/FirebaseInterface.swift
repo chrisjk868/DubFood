@@ -15,6 +15,8 @@ class FirebaseInterface {
 
     private let defaultResaurant: [String: Any]
     
+    private var currentData: [String: Any] = [:]
+    
     init(){
         FirebaseApp.configure()
         
@@ -46,12 +48,22 @@ class FirebaseInterface {
         database.child(businessID).setValue(restaurant)
     }
     
-    func readEntry(_ Key: String){
+    //Use this function to set the accssed value to the currentData property.
+    //This function does not return any value.
+    
+    
+    func getValue(_ Key: String) -> [String: Any]{
+        readEntry(Key)
+        
+        return currentData
+    }
+    
+    private func readEntry(_ Key: String){
         database.child(Key).observeSingleEvent(of: .value, with: { snapshot in guard let value = snapshot.value as? [String: Any] else {
                 print("INVALID KEY")
-                return
+            return
             }
-            print(value)
+            self.currentData = value
         })
     }
 }
