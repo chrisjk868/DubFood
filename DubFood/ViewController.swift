@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import CloudKit
 
 class ViewController: UIViewController {
     
@@ -22,7 +23,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // Calling the Yelp API Business Endpoint
-        makeRequest(coordinates: self.location)
+        //makeRequest(coordinates: self.location)
     }
 
     func makeRequest(coordinates : (Double, Double)) {
@@ -33,9 +34,9 @@ class ViewController: UIViewController {
         var request = URLRequest(url: URL(string: url)!)
         request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
-        
+
         var businessList: [String] = []
-        
+
         let task = URLSession.shared.dataTask(with: request) {
             (data, response, error) in guard let data = data else {
                 print("data is nil")
@@ -43,14 +44,14 @@ class ViewController: UIViewController {
             }
             do {
                 let data = try JSONSerialization.jsonObject(with: data) as! NSDictionary
-        
+
                 let value = data.value(forKey: "businesses") as! NSArray
-                
+
                 for i in value{
                     let location = i as! NSDictionary
                     businessList.append(location.value(forKey: "id")! as! String)
                 }
-                
+
                 DispatchQueue.main.async {
                     self.businesses = businessList
                     print("businesses: \(self.businesses!)")
@@ -61,8 +62,5 @@ class ViewController: UIViewController {
         }
         task.resume()
     }
-
-    
-    
 }
 
