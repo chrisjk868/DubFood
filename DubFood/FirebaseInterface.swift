@@ -17,7 +17,7 @@ class FirebaseInterface {
     
     private var currentData: [String: Any] = [:]
     
-    init(){
+    init() {
         FirebaseApp.configure()
         
         self.database = Database.database().reference()
