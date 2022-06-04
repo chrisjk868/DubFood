@@ -13,6 +13,8 @@
 		9DF6BEAE2849542800DD1D55 /* BusinessDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6BEAD2849542800DD1D55 /* BusinessDetailsViewController.swift */; };
 		9DF6BEB02849543C00DD1D55 /* BusinessDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6BEAF2849543C00DD1D55 /* BusinessDecode.swift */; };
 		D9508DE528485D3E003788F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9508DE428485D3E003788F5 /* GoogleService-Info.plist */; };
+		D9508DE7284AFB35003788F5 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9508DE6284AFB35003788F5 /* ImageCollectionViewCell.swift */; };
+		D9508DE9284B0A1B003788F5 /* BusinessDetailsImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9508DE8284B0A1B003788F5 /* BusinessDetailsImageView.swift */; };
 		D9F10EC0283DB7AD00A8E968 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EBF283DB7AD00A8E968 /* AppDelegate.swift */; };
 		D9F10EC2283DB7AD00A8E968 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EC1283DB7AD00A8E968 /* SceneDelegate.swift */; };
 		D9F10EC4283DB7AD00A8E968 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EC3283DB7AD00A8E968 /* ViewController.swift */; };
@@ -35,6 +37,8 @@
 		9DF6BEAD2849542800DD1D55 /* BusinessDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDetailsViewController.swift; sourceTree = "<group>"; };
 		9DF6BEAF2849543C00DD1D55 /* BusinessDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDecode.swift; sourceTree = "<group>"; };
 		D9508DE428485D3E003788F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D9508DE6284AFB35003788F5 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		D9508DE8284B0A1B003788F5 /* BusinessDetailsImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessDetailsImageView.swift; sourceTree = "<group>"; };
 		D9F10EBC283DB7AD00A8E968 /* DubFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DubFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F10EBF283DB7AD00A8E968 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9F10EC1283DB7AD00A8E968 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 				D9F10EDB284160D600A8E968 /* NewsViewController.swift */,
 				D9F10ED9284160C600A8E968 /* RecViewController.swift */,
 				9DF6BEAD2849542800DD1D55 /* BusinessDetailsViewController.swift */,
+				D9508DE6284AFB35003788F5 /* ImageCollectionViewCell.swift */,
+				D9508DE8284B0A1B003788F5 /* BusinessDetailsImageView.swift */,
 				9DF6BEAF2849543C00DD1D55 /* BusinessDecode.swift */,
 				9DF6BEAB284951D500DD1D55 /* NewPostViewController.swift */,
 				D9F10EDD2842EC3300A8E968 /* YelpBusinessSearch.swift */,
@@ -190,9 +196,11 @@
 				D9F10EDA284160C600A8E968 /* RecViewController.swift in Sources */,
 				9DF6BEAE2849542800DD1D55 /* BusinessDetailsViewController.swift in Sources */,
 				D9F10EC0283DB7AD00A8E968 /* AppDelegate.swift in Sources */,
+				D9508DE9284B0A1B003788F5 /* BusinessDetailsImageView.swift in Sources */,
 				850A5CE42846913200065BD3 /* User.swift in Sources */,
 				E36F85072846B18500F18C4C /* FirebaseInterface.swift in Sources */,
 				9DF6BEB02849543C00DD1D55 /* BusinessDecode.swift in Sources */,
+				D9508DE7284AFB35003788F5 /* ImageCollectionViewCell.swift in Sources */,
 				D9F10EDC284160D600A8E968 /* NewsViewController.swift in Sources */,
 				D9F10EC2283DB7AD00A8E968 /* SceneDelegate.swift in Sources */,
 				D9F10ED82841586400A8E968 /* OnBoardingViewController.swift in Sources */,

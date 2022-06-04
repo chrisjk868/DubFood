@@ -11,8 +11,8 @@ import SwiftUI
 
 class BusinessDetailsViewController: UIViewController {
         
-    
     @IBOutlet weak var image_scroller: UICollectionView!
+    @IBOutlet weak var page_controller: UIPageControl!
     @IBOutlet weak var star_rating: UIStackView!
     @IBOutlet weak var descr: UILabel!
     @IBOutlet weak var location: UILabel!
@@ -29,10 +29,19 @@ class BusinessDetailsViewController: UIViewController {
     let star_full = UIImage(systemName: "star.fill")
     let star_half = UIImage(systemName: "star.leadinghalf.filled")
     let star_empty = UIImage(systemName: "star")
+    
+    // business images
+    var img_url_arr : [String]? = ["https://s3-media2.fl.yelpcdn.com/bphoto/CPc91bGzKBe95aM5edjhhQ/o.jpg"]
+    
+    // auto scroll timer
+    var timer:Timer?
+    var currentCellIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         makeDetailsRequest()
+        self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(slideToNext), userInfo: nil, repeats: true)
+        self.page_controller.numberOfPages = self.img_url_arr!.count
     }
     
     func makeDetailsRequest() {
@@ -48,13 +57,15 @@ class BusinessDetailsViewController: UIViewController {
             do {
                 let details = try JSONDecoder().decode(Details.self, from: data)
                 self.business_details = details
+                self.img_url_arr = details.photos
                 DispatchQueue.main.async {
+//                    print(self.img_url_arr)
+                    self.image_scroller.reloadData()
+                    self.page_controller.numberOfPages = self.img_url_arr!.count
                     self.restaurant_name.text = self.business_details?.name!
                     self.location.text = self.business_details?.location?.displayAddress.joined(separator: ", ")
                     self.descr.text = self.updateDescr()
                     self.updateRating()
-                    self.updateImage(
-                        business_img: URL(string: (self.business_details?.imageURL)!)!)
                 }
             } catch {
                 print(error)
@@ -62,19 +73,6 @@ class BusinessDetailsViewController: UIViewController {
             
         }
         task.resume()
-    }
-    
-    func updateImage(business_img : URL) {
-        URLSession.shared.dataTask(with: business_img) {
-            (data, response, error) in guard let data = data else {
-                print("image data is nil")
-                return
-            }
-            DispatchQueue.main.async {
-                var image = UIImage(data: data)
-//                self.business_img.image = self.resizeImage(image: image!, targetSize: CGSize(width: self.business_img.frame.width, height: self.business_img.frame.height))
-            }
-        }.resume()
     }
     
     func updateRating() {
@@ -86,7 +84,7 @@ class BusinessDetailsViewController: UIViewController {
         // Iterate over stars stack view
         var star_index = 1
         for item in self.star_rating.arrangedSubviews {
-            if let item_type = item as? UILabel {
+            if item is UILabel {
                 continue
             } else {
                 item.isHidden = true
@@ -117,32 +115,6 @@ class BusinessDetailsViewController: UIViewController {
         }
         return descr
     }
-    
-    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage? {
-        let size = image.size
-        
-        let widthRatio  = targetSize.width  / size.width
-        let heightRatio = targetSize.height / size.height
-        
-        // Figure out what our orientation is, and use that to form the rectangle
-        var newSize: CGSize
-        if(widthRatio > heightRatio) {
-            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
-        } else {
-            newSize = CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
-        }
-        
-        // This is the rect that we've calculated out and this is what is actually used below
-        let rect = CGRect(origin: .zero, size: newSize)
-        
-        // Actually do the resizing to the rect using the ImageContext stuff
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-        image.draw(in: rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    }
 
     /*
     // MARK: - Navigation
@@ -153,35 +125,38 @@ class BusinessDetailsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-}
-
-extension View {
-// This function changes our View to UIView, then calls another function
-// to convert the newly-made UIView to a UIImage.
-    public func asUIImage() -> UIImage {
-        let controller = UIHostingController(rootView: self)
-        
-        controller.view.frame = CGRect(x: 0, y: CGFloat(Int.max), width: 1, height: 1)
-        UIApplication.shared.windows.first!.rootViewController?.view.addSubview(controller.view)
-        
-        let size = controller.sizeThatFits(in: UIScreen.main.bounds.size)
-        controller.view.bounds = CGRect(origin: .zero, size: size)
-        controller.view.sizeToFit()
-        
-// here is the call to the function that converts UIView to UIImage: `.asUIImage()`
-        let image = controller.view.asUIImage()
-        controller.view.removeFromSuperview()
-        return image
-    }
-}
-
-extension UIView {
-// This is the function to convert UIView to UIImage
-    public func asUIImage() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        return renderer.image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
+    
+    @objc func slideToNext() {
+        if self.currentCellIndex < self.img_url_arr!.count - 1  {
+            self.currentCellIndex += 1
+        } else {
+            self.currentCellIndex = 0
         }
+        
+        self.page_controller.currentPage = self.currentCellIndex
+        
+        self.image_scroller.scrollToItem(at: IndexPath(item: self.currentCellIndex, section: 0), at: .right, animated: true)
     }
+
+}
+
+extension BusinessDetailsViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.img_url_arr!.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCollectionViewCell
+        // replace with business images
+        if let url = URL(string: self.img_url_arr![indexPath.row]) {
+            cell.business_img.loadImage(url: url)
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.image_scroller.frame.width, height: self.image_scroller.frame.height)
+    }
+    
 }
