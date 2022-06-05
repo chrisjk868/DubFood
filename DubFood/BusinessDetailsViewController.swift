@@ -68,6 +68,10 @@ class BusinessDetailsViewController: UIViewController {
         self.page_controller.numberOfPages = self.img_url_arr!.count
     }
     
+    override open var shouldAutorotate: Bool {
+            return false
+    }
+    
     func makeDetailsRequest() {
         var request = URLRequest(url: URL(string: self.business_id_url + self.business_id!)!)
         request.setValue("Bearer \(self.apiKey)", forHTTPHeaderField: "Authorization")

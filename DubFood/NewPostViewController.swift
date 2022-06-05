@@ -42,6 +42,10 @@ class NewPostViewController: UIViewController {
         print(self.rating)
     }
     
+    override open var shouldAutorotate: Bool {
+            return false
+    }
+    
     func writePostToDB() {
         self.post = [
             "username": self.curr_user,
