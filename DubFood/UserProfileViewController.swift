@@ -26,11 +26,11 @@ class UserProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showUserInfo()
+        getUserInfo()
         // Do any additional setup after loading the view.
     }
     
-    func showUserInfo() {
+    func getUserInfo() {
         // get data from local files
         print("getting user data from local files")
         if let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -39,12 +39,22 @@ class UserProfileViewController: UIViewController {
                 let data = try Data(contentsOf: pathWithFilename)
                 let info = try JSONDecoder().decode(UserData.self, from: data)
                 self.userInfo = [info]
+                showUserInfo()
             } catch {
                 print("There was an error getting user data from the local file: \(error)")
             }
         }
         
-        print("self.userInfo: \(self.userInfo)")
+        //print("self.userInfo: \(self.userInfo)")
+    }
+    
+    func showUserInfo() {
+        // TODO: NEED TO ATTACH TO STORYBOARD ELEMENTS
+        let name = self.userInfo[0].username
+        let email = self.userInfo[0].email
+        let uni = self.userInfo[0].university
+        
+        print("\(name), \(email), \(uni)")
     }
     
 
