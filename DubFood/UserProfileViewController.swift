@@ -53,6 +53,9 @@ class UserProfileViewController: UIViewController {
         let name = self.userInfo[0].username
         let email = self.userInfo[0].email
         let uni = self.userInfo[0].university
+        usernameLabel.text = "\(name)"
+        emailLabel.text = "\(email)"
+        universityLabel.text = "\(uni)"
         
         print("\(name), \(email), \(uni)")
     }
