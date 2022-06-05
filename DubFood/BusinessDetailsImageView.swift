@@ -15,7 +15,6 @@ class BusinessDetailsImageView: UIImageView {
                 return
             }
             DispatchQueue.main.async {
-//                self.image = new_img.resizeImage(CGFloat(225), opaque: true)
                 self.image = self.resizeImage(image: new_img, targetSize: CGSize(width: CGFloat(UIScreen.main.bounds.width), height: CGFloat(128)))
             }
         }

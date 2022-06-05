@@ -482,8 +482,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find Restaurant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLV-57-4ig">
-                                <rect key="frame" x="40" y="119" width="126" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLV-57-4ig">
+                                <rect key="frame" x="40" y="119" width="35" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -511,11 +511,17 @@
                                 <rect key="frame" x="112.5" y="471" width="69" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelBtnTap:" destination="3fP-Xv-Iax" eventType="touchUpInside" id="gcz-6S-JRA"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxO-vS-5CF">
                                 <rect key="frame" x="240.5" y="471" width="53" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Post"/>
+                                <connections>
+                                    <action selector="postBtnTap:" destination="3fP-Xv-Iax" eventType="touchUpInside" id="6VD-hp-qGh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bZ0-qE-ijK"/>
@@ -539,8 +545,13 @@
                             <constraint firstItem="MBN-Tb-VRz" firstAttribute="top" secondItem="bZ0-qE-ijK" secondAttribute="top" constant="10" id="zWo-fr-Kdu"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="dCq-H9-sme"/>
                     <connections>
+                        <outlet property="cancelBtn" destination="otj-W0-P68" id="jCy-vm-pFr"/>
+                        <outlet property="postBtn" destination="yxO-vS-5CF" id="6vE-jq-Gij"/>
                         <outlet property="postContentTxtField" destination="ngo-42-51d" id="SW3-AM-9AY"/>
+                        <outlet property="postTitle" destination="Bep-Vn-Qwa" id="pi7-hp-8Qn"/>
+                        <segue destination="zpZ-rD-lTN" kind="presentation" identifier="backToBusiness" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="xUX-Xd-l8S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gII-uh-yqe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -562,31 +573,31 @@
                                     <constraint firstAttribute="height" constant="150" id="Nb0-ts-tnF"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XMR-vz-TE6">
-                                    <size key="itemSize" width="374" height="128"/>
+                                    <size key="itemSize" width="380" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="0Rk-4h-Iyh" customClass="ImageCollectionViewCell" customModule="DubFood" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="376" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5aQ-tv-91I" customClass="ImageCollectionViewCell" customModule="DubFood" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2zW-lz-aEI" customClass="BusinessDetailsImageView" customModule="DubFood" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
+                                                    <rect key="frame" x="5" y="0.0" width="366" height="150"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="2zW-lz-aEI" secondAttribute="trailing" id="EW4-ny-3gX"/>
-                                                <constraint firstItem="2zW-lz-aEI" firstAttribute="leading" secondItem="5aQ-tv-91I" secondAttribute="leading" id="cHK-zJ-uhs"/>
+                                                <constraint firstAttribute="trailing" secondItem="2zW-lz-aEI" secondAttribute="trailing" constant="5" id="EW4-ny-3gX"/>
+                                                <constraint firstItem="2zW-lz-aEI" firstAttribute="leading" secondItem="5aQ-tv-91I" secondAttribute="leading" constant="5" id="cHK-zJ-uhs"/>
                                                 <constraint firstAttribute="bottom" secondItem="2zW-lz-aEI" secondAttribute="bottom" id="n99-Fa-DbX"/>
                                                 <constraint firstItem="2zW-lz-aEI" firstAttribute="top" secondItem="5aQ-tv-91I" secondAttribute="top" id="qHP-I0-hRl"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="374" height="150"/>
+                                        <size key="customSize" width="376" height="150"/>
                                         <connections>
                                             <outlet property="business_img" destination="2zW-lz-aEI" id="2oe-74-ZbC"/>
                                         </connections>
@@ -603,47 +614,47 @@
                                 <color key="currentPageIndicatorTintColor" systemColor="systemBlueColor"/>
                             </pageControl>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1Zj-rb-Myp">
-                                <rect key="frame" x="20" y="214" width="200" height="57"/>
+                                <rect key="frame" x="20" y="214" width="191" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZ9-1w-lMI">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhP-or-KKm">
-                                        <rect key="frame" x="0.0" y="35" width="200" height="22"/>
+                                        <rect key="frame" x="0.0" y="35" width="191" height="20"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yelp rating: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnX-kj-oow">
-                                                <rect key="frame" x="0.0" y="0.0" width="90" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="81" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="22" id="Cmw-lL-Dby"/>
+                                                    <constraint firstAttribute="height" constant="20" id="Cmw-lL-Dby"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nOR-Cb-Y9z">
-                                                <rect key="frame" x="90" y="-0.5" width="22" height="22"/>
+                                                <rect key="frame" x="81" y="-0.5" width="22" height="20"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WaG-Q2-Bge">
-                                                <rect key="frame" x="112" y="-0.5" width="22" height="22"/>
+                                                <rect key="frame" x="103" y="-0.5" width="22" height="20"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mZp-TQ-LjY">
-                                                <rect key="frame" x="134" y="-0.5" width="22" height="22"/>
+                                                <rect key="frame" x="125" y="-0.5" width="22" height="20"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="AMT-AJ-ba7">
-                                                <rect key="frame" x="156" y="-0.5" width="22" height="22"/>
+                                                <rect key="frame" x="147" y="-0.5" width="22" height="20"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IZj-Ww-ipj">
-                                                <rect key="frame" x="178" y="-0.5" width="22" height="22"/>
+                                                <rect key="frame" x="169" y="-0.5" width="22" height="20"/>
                                             </imageView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5PA-eC-c7u">
-                                <rect key="frame" x="20" y="291" width="250" height="20"/>
+                                <rect key="frame" x="20" y="289" width="250" height="20"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="mappin.and.ellipse" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="l9t-UX-RZw">
                                         <rect key="frame" x="0.0" y="-0.5" width="50" height="20.5"/>
@@ -656,14 +667,14 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="LzV-rG-pRM"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eim-dC-B8K">
-                                <rect key="frame" x="20" y="331" width="250" height="20"/>
+                                <rect key="frame" x="20" y="329" width="250" height="20"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="info.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QBD-FJ-jN6">
                                         <rect key="frame" x="0.0" y="0.5" width="50" height="19"/>
@@ -676,14 +687,14 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="ne9-PO-5lb"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DfE-TK-NAm">
-                                <rect key="frame" x="20" y="371" width="372" height="350"/>
+                                <rect key="frame" x="20" y="369" width="372" height="350"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="d6W-Li-W1L">
                                         <rect key="frame" x="0.0" y="0.0" width="372" height="25"/>
@@ -749,11 +760,12 @@
                         <outlet property="page_controller" destination="PNo-2o-mJa" id="cfW-7T-twI"/>
                         <outlet property="restaurant_name" destination="CZ9-1w-lMI" id="5qh-8J-0Zh"/>
                         <outlet property="star_rating" destination="IhP-or-KKm" id="87V-Iz-m7K"/>
+                        <segue destination="3fP-Xv-Iax" kind="presentation" identifier="post" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="Tir-SH-pMZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gmz-gH-r5b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1494.2028985507247" y="817.63392857142856"/>
+            <point key="canvasLocation" x="-1616" y="833"/>
         </scene>
         <!--Explore-->
         <scene sceneID="Jk2-d3-hy2">

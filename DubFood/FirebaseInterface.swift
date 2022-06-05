@@ -10,60 +10,99 @@ import FirebaseCore
 import FirebaseDatabase
 
 class FirebaseInterface {
-    
-    private let database: DatabaseReference
 
-    private let defaultResaurant: [String: Any]
+//    public let defaultResaurant: [String: Any]
     
-    private var currentData: [String: Any] = [:]
+    public let database: DatabaseReference
+    public var currentData: Any?
+    public static var isAlreadyLaunchedOnce = false
     
     init() {
-        FirebaseApp.configure()
-        
+        if !FirebaseInterface.isAlreadyLaunchedOnce {
+            FirebaseApp.configure()
+            FirebaseInterface.isAlreadyLaunchedOnce = true
+        }
         self.database = Database.database().reference()
-        
-        self.defaultResaurant = [
-            "restaurantName": "sampleName",
-            "yelpStarRating": 1,
-            "location": "seattle",
-            "description" : "sampleDescription",
-            "image": "sampleURL",
-            "posts": [["userName": "testUserName", "postContent" : "sampleContent"], ["userName2": "testUserName", "postContentsdasd" : "sampleCasdasdontent"]],
-            "businessID": "sampleID"
-        ]
+        self.currentData = nil
+//        self.defaultResaurant = [
+//            "restaurantName": "sampleName",
+//            "yelpStarRating": 1,
+//            "location": "seattle",
+//            "description" : "sampleDescription",
+//            "image": "sampleURL",
+//            "posts": [["userName": "testUserName", "postContent" : "sampleContent"], ["userName2": "testUserName", "postContentsdasd" : "sampleCasdasdontent"]],
+//            "businessID": "sampleID"
+//        ]
     }
     
-    @objc func addNewRestaurant(restaurantName: String, yelpStarRating: Int, location: String, description: String, imageURL: String, image: String, posts: [[String: String]], businessID: String){
+    func addNewRestaurant(
+        business_name: String,
+        business_id: String,
+        business_img: String,
+        rating: Double,
+        posts: [[String : String]]) {
         
-        let restaurant: [String: Any] = [
-            "restaurantName": restaurantName,
-            "yelpStarRating": yelpStarRating,
-            "location": location,
-            "description" : description,
-            "image": imageURL,
-            "posts": posts,
-            "businessID": businessID
-        ]
-        
-        database.child(businessID).setValue(restaurant)
+            // Function Body:
+            let new_restaurant_post: [String: Any] = [
+                "business_name": business_name,
+                "business_id": business_id,
+                "business_img": business_img,
+                "rating": rating,
+                "posts": posts
+            ]
+            
+            print(new_restaurant_post)
+            
+            self.database.child("restaurants").observeSingleEvent(of: .value) { (snapshot) in
+                let curr_restaurant_arr = snapshot.value as! NSMutableArray
+                curr_restaurant_arr.add(new_restaurant_post)
+                self.database.updateChildValues(["restaurants" : curr_restaurant_arr]) {
+                    (error:Error?, ref:DatabaseReference) in
+                    if error != nil {
+                        print("Data couldn't be saved")
+                    } else {
+                        print("Data saved successfully")
+                    }
+                }
+            }
+            
     }
     
     //Use this function to set the accssed value to the currentData property.
     //This function does not return any value.
-    
-    
-    func getValue(_ Key: String) -> [String: Any]{
-        readEntry(Key)
-        
-        return currentData
-    }
-    
-    private func readEntry(_ Key: String){
-        database.child(Key).observeSingleEvent(of: .value, with: { snapshot in guard let value = snapshot.value as? [String: Any] else {
-                print("INVALID KEY")
-            return
+    //Use this as an example for making read requests from database.
+    func setValue(_ Key: String) {
+        self.readEntry(Key) { data, response in
+            if data == nil {
+                print("There was an error")
+                print(response!)
+                return
             }
-            self.currentData = value
-        })
+            self.currentData = data
+        }
     }
+
+    
+    func readEntry(_ Key: String, completion: @escaping (Any?, String?) -> Void ) {
+        self.database.observeSingleEvent(of: .value, with: { snapshot in
+            let data = snapshot.value as? NSDictionary
+            completion(data, "success")
+        }) { error in
+            print(error.localizedDescription)
+            completion(nil, "Error: \(error.localizedDescription)")
+        }
+        
+    }
+    
+    //    func readEntry(_ Key: String, completion: @escaping (Any) -> Void){
+    //        database.observeSingleEvent(of: .value, with: { snapshot in guard let value = snapshot.value as? [String: Any] else {
+    //            print("INVALID KEY")
+    //            completion(self.currentData!)
+    //            return
+    //            }
+    //            self.currentData = value[Key]
+    //            completion(self.currentData)
+    //        })
+    //    }
+    
 }

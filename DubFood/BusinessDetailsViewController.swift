@@ -34,11 +34,21 @@ class BusinessDetailsViewController: UIViewController {
     var img_url_arr : [String]? = ["https://s3-media2.fl.yelpcdn.com/bphoto/CPc91bGzKBe95aM5edjhhQ/o.jpg"]
     
     // auto scroll timer
-    var timer:Timer?
+    var timer : Timer?
     var currentCellIndex = 0
+    
+    
+    // database
+    var db : FirebaseInterface?
+    
+    // posts data
+    var curr_posts : [[String : String]]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.add_comment.isUserInteractionEnabled = true
+        let create_post_tap = UITapGestureRecognizer(target: self, action: #selector(createPost(_:)))
+        self.add_comment.addGestureRecognizer(create_post_tap)
         makeDetailsRequest()
         self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(slideToNext), userInfo: nil, repeats: true)
         self.page_controller.numberOfPages = self.img_url_arr!.count
@@ -59,7 +69,6 @@ class BusinessDetailsViewController: UIViewController {
                 self.business_details = details
                 self.img_url_arr = details.photos
                 DispatchQueue.main.async {
-//                    print(self.img_url_arr)
                     self.image_scroller.reloadData()
                     self.page_controller.numberOfPages = self.img_url_arr!.count
                     self.restaurant_name.text = self.business_details?.name!
@@ -91,13 +100,13 @@ class BusinessDetailsViewController: UIViewController {
                 if full_stars > 0 {
                     let full_star_view = UIImageView(image: self.star_full)
                     full_star_view.tintColor = .systemBlue
-                    full_star_view.frame = CGRect(x: 0, y: 0, width: 22, height: 15)
+                    full_star_view.frame = CGRect(x: 0, y: 0, width: 22, height: 14)
                     self.star_rating.insertArrangedSubview(full_star_view, at: star_index)
                     full_stars -= 1
                 } else {
                     let half_star_view = UIImageView(image: self.star_half)
                     half_star_view.tintColor = .systemBlue
-                    half_star_view.frame = CGRect(x: 0, y: 0, width: 22, height: 15)
+                    half_star_view.frame = CGRect(x: 0, y: 0, width: 22, height: 14)
                     self.star_rating.insertArrangedSubview(half_star_view, at: star_index)
                     half_stars -= 1
                 }
@@ -115,16 +124,6 @@ class BusinessDetailsViewController: UIViewController {
         }
         return descr
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     @objc func slideToNext() {
         if self.currentCellIndex < self.img_url_arr!.count - 1  {
@@ -136,6 +135,30 @@ class BusinessDetailsViewController: UIViewController {
         self.page_controller.currentPage = self.currentCellIndex
         
         self.image_scroller.scrollToItem(at: IndexPath(item: self.currentCellIndex, section: 0), at: .right, animated: true)
+    }
+    
+    @objc func createPost(_ sender: UITapGestureRecognizer) {
+        print("tapped create post")
+        self.performSegue(withIdentifier: "post", sender: self)
+    }
+
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "post" {
+            let vc = segue.destination as! NewPostViewController
+//            vc.business_name = (self.business_details?.name)!
+//            vc.business_id = (self.business_details?.id)!
+//            vc.business_img = (self.business_details?.imageURL)!
+//            vc.rating = (self.business_details?.rating)!
+            vc.business_name = "Test Restaurant"
+            vc.business_id = "Test Restaurant ID"
+            vc.business_img = "Test Restaurant IMG"
+            vc.rating = 5.0
+        }
     }
 
 }
@@ -151,6 +174,7 @@ extension BusinessDetailsViewController : UICollectionViewDelegate, UICollection
         // replace with business images
         if let url = URL(string: self.img_url_arr![indexPath.row]) {
             cell.business_img.loadImage(url: url)
+            cell.makeRounded()
         }
         return cell
     }
