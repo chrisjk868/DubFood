@@ -18,6 +18,7 @@ class BusinessDetailsViewController: UIViewController {
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var restaurant_name: UILabel!
     @IBOutlet weak var add_comment: UIImageView!
+    @IBOutlet weak var usr_posts: UITableView!
     
     var business_details : Details? = nil
     var business_id : String? =  "WavvLdfdP6g8aZTtbBQHTw" // replace with business id here
@@ -42,15 +43,28 @@ class BusinessDetailsViewController: UIViewController {
     var db : FirebaseInterface?
     
     // posts data
-    var curr_posts : [[String : String]]?
+    var curr_posts : [[String : String]]? = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.usr_posts.delegate = self
+        self.usr_posts.dataSource = self
+        self.db = FirebaseInterface()
         self.add_comment.isUserInteractionEnabled = true
         let create_post_tap = UITapGestureRecognizer(target: self, action: #selector(createPost(_:)))
         self.add_comment.addGestureRecognizer(create_post_tap)
+        getPosts(id: self.business_id!) { postsArr, response in
+            if postsArr == nil {
+                print(response)
+                print("Didn't get posts")
+                return
+            }
+            print(response)
+            self.curr_posts = postsArr as? [[String : String]]
+            self.usr_posts.reloadData()
+        }
         makeDetailsRequest()
-        self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(slideToNext), userInfo: nil, repeats: true)
+        // moved timer
         self.page_controller.numberOfPages = self.img_url_arr!.count
     }
     
@@ -69,6 +83,9 @@ class BusinessDetailsViewController: UIViewController {
                 self.business_details = details
                 self.img_url_arr = details.photos
                 DispatchQueue.main.async {
+                    if self.img_url_arr!.count > 1 {
+                        self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.slideToNext), userInfo: nil, repeats: true)
+                    }
                     self.image_scroller.reloadData()
                     self.page_controller.numberOfPages = self.img_url_arr!.count
                     self.restaurant_name.text = self.business_details?.name!
@@ -125,6 +142,26 @@ class BusinessDetailsViewController: UIViewController {
         return descr
     }
     
+    func getPosts(id : String, completion: @escaping (NSArray?, String) -> Void) {
+        self.db!.readEntry("restaurant") { data, response in
+            if data == nil {
+                print("Data is nil")
+                print(response!)
+                completion(nil, "Couldn't get posts or no posts")
+                return
+            }
+            let rest_dict = data as! NSDictionary
+            let rest_arr = rest_dict["restaurants"] as! NSArray
+            var posts_arr : NSArray?
+            for rest_obj in (rest_arr as! [NSDictionary]) {
+                if rest_obj["business_id"] as! String == self.business_id! {
+                    posts_arr = rest_obj["posts"] as? NSArray
+                    completion(posts_arr, "Got Posts for restaurant \(self.business_id!)")
+                }
+            }
+        }
+    }
+    
     @objc func slideToNext() {
         if self.currentCellIndex < self.img_url_arr!.count - 1  {
             self.currentCellIndex += 1
@@ -150,14 +187,15 @@ class BusinessDetailsViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "post" {
             let vc = segue.destination as! NewPostViewController
-//            vc.business_name = (self.business_details?.name)!
-//            vc.business_id = (self.business_details?.id)!
-//            vc.business_img = (self.business_details?.imageURL)!
-//            vc.rating = (self.business_details?.rating)!
-            vc.business_name = "Test Restaurant"
-            vc.business_id = "Test Restaurant ID"
-            vc.business_img = "Test Restaurant IMG"
-            vc.rating = 5.0
+            vc.business_name = (self.business_details?.name)!
+            vc.business_id = (self.business_details?.id)!
+            vc.business_img = (self.business_details?.imageURL)!
+            vc.rating = (self.business_details?.rating)!
+            // For testing
+//            vc.business_name = "Test Restaurant"
+//            vc.business_id = "Test Restaurant ID"
+//            vc.business_img = "Test Restaurant IMG"
+//            vc.rating = 5.0
         }
     }
 
@@ -181,6 +219,23 @@ extension BusinessDetailsViewController : UICollectionViewDelegate, UICollection
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.image_scroller.frame.width, height: self.image_scroller.frame.height)
+    }
+    
+}
+
+extension BusinessDetailsViewController : UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return curr_posts!.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = usr_posts.dequeueReusableCell(withIdentifier: "userPostCell") as! PostsTableViewCell
+        cell.username.text = curr_posts![indexPath.row]["username"]
+        cell.postTitle.text = curr_posts![indexPath.row]["title"]
+        cell.postContent.text = curr_posts![indexPath.row]["content"]
+        cell.selectionStyle = .none
+        return cell
     }
     
 }

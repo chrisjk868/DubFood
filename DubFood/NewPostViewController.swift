@@ -15,6 +15,7 @@ class NewPostViewController: UIViewController {
     @IBOutlet weak var postContentTxtField: UITextField!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var postBtn: UIButton!
+    @IBOutlet weak var load_spinner: UIActivityIndicatorView!
     
     let business_id_url = "https://api.yelp.com/v3/businesses/"
     var curr_user = "TestUser" // Change this to current user
@@ -27,6 +28,8 @@ class NewPostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.load_spinner.isHidden = true
+        self.postBtn.isEnabled = true
         self.postTitle.borderStyle = UITextField.BorderStyle.roundedRect
         self.postContentTxtField.borderStyle = UITextField.BorderStyle.roundedRect
 
@@ -126,7 +129,7 @@ class NewPostViewController: UIViewController {
     @IBAction func cancelBtnTap(_ sender: Any) {
         self.postTitle.text = ""
         self.postContentTxtField.text = ""
-        self.performSegue(withIdentifier: "backToBusiness", sender: self)
+        self.performSegue(withIdentifier:"backToBusiness",sender: self)
     }
     
     @IBAction func postBtnTap(_ sender: Any) {
@@ -147,8 +150,15 @@ class NewPostViewController: UIViewController {
             }))
             self.present(alert, animated: true, completion: nil)
         } else {
+            self.postBtn.isEnabled = false
+            self.load_spinner.isHidden = false
+            self.load_spinner.startAnimating()
             self.writePostToDB()
-            self.performSegue(withIdentifier: "backToBusiness", sender: self)
+            DispatchQueue.main.asyncAfter(deadline:.now() + 2.0, execute: {
+                self.load_spinner.isHidden = true
+                self.load_spinner.stopAnimating()
+               self.performSegue(withIdentifier:"backToBusiness",sender: self)
+            })
         }
         
     }
@@ -161,7 +171,6 @@ class NewPostViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "backToBusiness" {
             let vc = segue.destination as! BusinessDetailsViewController
-            
         }
     }
 }
