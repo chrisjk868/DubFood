@@ -113,7 +113,7 @@ class BusinessDetailsViewController: UIViewController {
                 print("data is nil")
                 return
             }
-            
+            print(data)
             do {
                 let details = try JSONDecoder().decode(Details.self, from: data)
                 self.business_details = details
