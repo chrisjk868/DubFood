@@ -251,6 +251,7 @@ extension BusinessDetailsViewController : UICollectionViewDelegate, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCollectionViewCell
         // replace with business images
         if let url = URL(string: self.img_url_arr![indexPath.row]) {
+            cell.business_img.isDetails = true
             cell.business_img.loadImage(url: url)
             cell.makeRounded()
         }

@@ -10,7 +10,7 @@ import UIKit
 class RestaurantTableViewCell: UITableViewCell {
 
     @IBOutlet weak var restaurantView: UIView!
-    @IBOutlet weak var restaurantImg: UIImageView!
+    @IBOutlet weak var restaurantImg: BusinessDetailsImageView!
     @IBOutlet weak var restaurantName: UILabel!
     @IBOutlet weak var restaurantLoc: UILabel!
     @IBOutlet weak var restaurantPriceLvl: UIStackView!
@@ -22,6 +22,9 @@ class RestaurantTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+//        restaurantImg.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
+        restaurantImg.layer.cornerRadius = restaurantImg.frame.size.width / 2
+        restaurantImg.clipsToBounds = true
         restaurantView.layer.cornerRadius = restaurantView.frame.height / 3
     }
 

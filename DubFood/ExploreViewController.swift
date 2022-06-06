@@ -93,6 +93,8 @@ extension ExploreViewController : UITableViewDelegate, UITableViewDataSource {
         let display_address = "\(location_obj.value(forKey: "address1") as! String), \(location_obj.value(forKey: "city") as! String), \(location_obj.value(forKey: "state") as! String)"
         let priceString = restaurant?.value(forKey: "price") as! String
         let priceLvl = priceString.count
+        cell.restaurantImg.isDetails = false
+        cell.restaurantImg.loadImage(url: URL(string: restaurant?.value(forKey: "image_url") as! String)!)
         cell.restaurantName.text = (restaurant?.value(forKey: "name") as! String)
         cell.restaurantLoc.text = display_address
         cell.updatePriceLvl(priceLvl: priceLvl)

@@ -9,13 +9,19 @@ import UIKit
 
 class BusinessDetailsImageView: UIImageView {
     
+    var isDetails : Bool?
+    
     func loadImage(url: URL) {
         let task = URLSession.shared.dataTask(with: url) { data, response, error in guard let data = data, let new_img = UIImage(data: data) else {
                 print("Image can't be loaded")
                 return
             }
             DispatchQueue.main.async {
-                self.image = self.resizeImage(image: new_img, targetSize: CGSize(width: CGFloat(UIScreen.main.bounds.width), height: CGFloat(128)))
+                if self.isDetails! {
+                    self.image = self.resizeImage(image: new_img, targetSize: CGSize(width: CGFloat(UIScreen.main.bounds.width), height: CGFloat(128)))
+                } else {
+                    self.image = self.resizeImage(image: new_img, targetSize: CGSize(width: CGFloat(70), height: CGFloat(70)))
+                }
             }
         }
         task.resume()
