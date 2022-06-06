@@ -1,0 +1,19 @@
+{
+
+    "restaurants" : [
+        {
+            "business_name": "Gary Danko",
+            "business_id": "blahblahblah",
+            "businnes_img": "https://s3-media2.fl.yelpcdn.com/bphoto/CPc91bGzKBe95aM5edjhhQ/o.jpg",
+            "rating": 4.5,
+            "posts": [
+                {
+                    "username": "TestUser",
+                    "title": "TestPost",
+                    "content": "TestContent"
+                }
+            ]
+        }
+    ]
+
+}
