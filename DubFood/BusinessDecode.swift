@@ -76,7 +76,7 @@ struct Open: Codable {
 
 // MARK: - Location
 struct Location: Codable {
-    let address1, address2, address3, city: String
+    let address1, address2, address3, city: String?
     let zipCode, country, state: String
     let displayAddress: [String]
     let crossStreets: String
@@ -92,10 +92,10 @@ struct Location: Codable {
 
 // MARK: - SpecialHour
 struct SpecialHour: Codable {
-    let date: String
-    let isClosed: JSONNull?
-    let start, end: String
-    let isOvernight: Bool
+    let date: String?
+    let isClosed: Bool?
+    let start, end: String?
+    let isOvernight: Bool?
 
     enum CodingKeys: String, CodingKey {
         case date
