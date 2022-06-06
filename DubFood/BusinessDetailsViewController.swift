@@ -106,8 +106,10 @@ class BusinessDetailsViewController: UIViewController {
     }
     
     func updateRating() {
+        print("ran")
         let denominator = 2.0
         let stars = round((self.business_details?.rating)! * denominator) / denominator
+        print(self.business_details?.rating)
         var full_stars = Int(floor(stars))
         var half_stars = Int((stars - Double(full_stars)) / 0.5)
         
@@ -182,7 +184,11 @@ class BusinessDetailsViewController: UIViewController {
         print("tapped create post")
         self.performSegue(withIdentifier: "post", sender: self)
     }
-
+    
+    @IBAction func backBtnClick(_ sender: Any) {
+        self.performSegue(withIdentifier: "toExplore", sender: self)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

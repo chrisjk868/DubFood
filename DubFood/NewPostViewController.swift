@@ -175,6 +175,7 @@ class NewPostViewController: UIViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "backToBusiness" {
             let vc = segue.destination as! BusinessDetailsViewController
+            vc.business_id = self.business_id
         }
     }
 }
