@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="85v-yp-loM">
-                                <rect key="frame" x="15" y="118" width="384" height="303.5"/>
+                                <rect key="frame" x="15" y="118" width="384" height="353.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your username?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Jo-VZ-Hzx">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="20.5"/>
@@ -71,13 +71,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRU-nM-9oq">
-                                        <rect key="frame" x="0.0" y="204.5" width="384" height="50"/>
+                                        <rect key="frame" x="0.0" y="204.5" width="384" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="KVw-Mh-eiy"/>
+                                            <constraint firstAttribute="height" constant="100" id="KVw-Mh-eiy"/>
                                         </constraints>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7J-DB-8VC">
-                                        <rect key="frame" x="0.0" y="269.5" width="384" height="34"/>
+                                        <rect key="frame" x="0.0" y="319.5" width="384" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="81c-UM-ToT"/>
                                         </constraints>
@@ -85,7 +85,6 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Submit"/>
                                         <connections>
                                             <action selector="submitBtnClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iWX-ZK-GcB"/>
-                                            <segue destination="57U-MT-FYH" kind="presentation" modalPresentationStyle="fullScreen" id="c1I-CQ-tQY"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1088,7 +1087,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="OCM-lw-4S7">
             <objects>
-                <tabBarController id="57U-MT-FYH" customClass="TabBarViewController" customModule="DubFood" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarVC" id="57U-MT-FYH" customClass="TabBarViewController" customModule="DubFood" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="2Ou-Su-2Cb"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xdo-AU-ihl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
