@@ -21,6 +21,7 @@ class ExploreViewController: UIViewController {
     var business_arr : [NSDictionary]?
     var location = (47.66263, -122.306852) // Replace with user coordinates
     var selected_business_id = ""
+    var filters :[String]? = [""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class ExploreViewController: UIViewController {
 
     func makeRequest(coordinates : (Double, Double)) {
         print("started making requests")
-        let test = YelpBusinessSearch(latitude: String(coordinates.0), longitude: String(coordinates.1), radius: "", categories: [""])
+        let test = YelpBusinessSearch(latitude: String(coordinates.0), longitude: String(coordinates.1), radius: "", categories: filters)
         let url : String = test.searchByLatLong()
         print(url)
         var request = URLRequest(url: URL(string: url)!)
@@ -70,6 +71,10 @@ class ExploreViewController: UIViewController {
             }
         }
         task.resume()
+    }
+    
+    func printFilters() {
+        print(filters)
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

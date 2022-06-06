@@ -8,6 +8,10 @@
 import UIKit
 
 class RecViewController: UIViewController {
+    
+    public var categories : [String]? = []
+    
+    let ExploreVC = ExploreViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,10 +20,20 @@ class RecViewController: UIViewController {
     }
     
   
-    @IBAction func buttonOnClick(_ sender: Any) {
+    @IBAction func buttonOnClick(_ sender: UIButton) {
         print("hello world")
+        print((sender.titleLabel?.text!)!)
+        categories?.append("\((sender.titleLabel?.text!)!)")
+        updateFilters()
+        ExploreVC.printFilters()
+
     }
     
+    func updateFilters() {
+        ExploreVC.filters = categories!
+    }
+    
+       
     /*
     // MARK: - Navigation
 

@@ -54,6 +54,20 @@ class YelpBusinessSearch {
             
             let lat_long = "latitude=\(self.latitude!)&longitude=\(self.longitude!)&limit=10"
             
+            if categories != nil {
+                var categoriesPath = "&categories="
+                var numCategories = categories!.count
+                for i in 0...numCategories - 1{
+                    if i == 0 {
+                        categoriesPath = categoriesPath + "\(categories![i])"
+                    } else {
+                        categoriesPath = categoriesPath + "+\(categories![i])"
+                    }
+                }
+                print(categoriesPath)
+                return rootURL + path + lat_long + categoriesPath
+            }
+            
             return rootURL + path + lat_long
         } else {
             //searchByLocation()
