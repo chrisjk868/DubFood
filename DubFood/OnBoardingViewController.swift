@@ -30,6 +30,34 @@ class OnBoardingViewController: UIViewController, CLLocationManagerDelegate {
         university.dataSource = self
 
         // Do any additional setup after loading the view.
+        
+        // checking if the user has already been onboarded (has a local file saved)
+        var userExists = false
+        
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let url = NSURL(fileURLWithPath: path)
+        if let pathComponent = url.appendingPathComponent("userInfo.json") {
+            let filePath = pathComponent.path
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: filePath) {
+                print("LOCAL FILE AVAILABLE")
+                userExists = true
+            } else {
+                print("LOCAL FILE NOT AVAILABLE")
+            }
+        } else {
+            print("FILE PATH NOT AVAILABLE")
+        }
+        
+        
+        
+        if userExists {
+            // present the storyboard
+            let tabBarVC = storyboard?.instantiateViewController(identifier: "TabBarVC") as! TabBarViewController
+            tabBarVC.modalPresentationStyle = .fullScreen
+            present(tabBarVC, animated: false)
+        }
+        
 
         // Get User Location
 
