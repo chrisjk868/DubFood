@@ -65,7 +65,21 @@ class BusinessDetailsViewController: UIViewController {
         }
         makeDetailsRequest()
         // moved timer
+//        self.image_scroller.layer.cornerRadius = 10
         self.page_controller.numberOfPages = self.img_url_arr!.count
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getPosts(id: self.business_id!) { postsArr, response in
+            if postsArr == nil {
+                print(response)
+                print("Didn't get posts")
+                return
+            }
+            print(response)
+            self.curr_posts = postsArr as? [[String : String]]
+            self.usr_posts.reloadData()
+        }
     }
     
     override open var shouldAutorotate: Bool {
@@ -106,12 +120,14 @@ class BusinessDetailsViewController: UIViewController {
     }
     
     func updateRating() {
-        print("ran")
         let denominator = 2.0
         let stars = round((self.business_details?.rating)! * denominator) / denominator
-        print(self.business_details?.rating)
         var full_stars = Int(floor(stars))
         var half_stars = Int((stars - Double(full_stars)) / 0.5)
+        
+        print(self.business_details?.rating)
+        print(full_stars)
+        print(half_stars)
         
         // Iterate over stars stack view
         var star_index = 1
@@ -127,11 +143,18 @@ class BusinessDetailsViewController: UIViewController {
                     self.star_rating.insertArrangedSubview(full_star_view, at: star_index)
                     full_stars -= 1
                 } else {
-                    let half_star_view = UIImageView(image: self.star_half)
-                    half_star_view.tintColor = .systemBlue
-                    half_star_view.frame = CGRect(x: 0, y: 0, width: 22, height: 14)
-                    self.star_rating.insertArrangedSubview(half_star_view, at: star_index)
-                    half_stars -= 1
+                    if half_stars > 0 {
+                        let half_star_view = UIImageView(image: self.star_half)
+                        half_star_view.tintColor = .systemBlue
+                        half_star_view.frame = CGRect(x: 0, y: 0, width: 22, height: 14)
+                        self.star_rating.insertArrangedSubview(half_star_view, at: star_index)
+                        half_stars -= 1
+                    } else {
+                        let empty_star_view = UIImageView(image: self.star_empty)
+                        empty_star_view.tintColor = .systemBlue
+                        empty_star_view.frame = CGRect(x: 0, y: 0, width: 22, height: 14)
+                        self.star_rating.insertArrangedSubview(empty_star_view, at: star_index)
+                    }
                 }
                 star_index += 1
             }
@@ -149,7 +172,7 @@ class BusinessDetailsViewController: UIViewController {
     }
     
     func getPosts(id : String, completion: @escaping (NSArray?, String) -> Void) {
-        self.db!.readEntry("restaurant") { data, response in
+        self.db!.readEntry() { data, response in
             if data == nil {
                 print("Data is nil")
                 print(response!)
@@ -157,11 +180,11 @@ class BusinessDetailsViewController: UIViewController {
                 return
             }
             let rest_dict = data as! NSDictionary
-            let rest_arr = rest_dict["restaurants"] as! NSArray
+            let rest_arr = rest_dict["restaurants"] as! NSDictionary
             var posts_arr : NSArray?
-            for rest_obj in (rest_arr as! [NSDictionary]) {
-                if rest_obj["business_id"] as! String == self.business_id! {
-                    posts_arr = rest_obj["posts"] as? NSArray
+            for (rest_key, rest) in rest_arr {
+                if  rest_key as! String == self.business_id! {
+                    posts_arr = (rest as AnyObject).value(forKey: "posts") as? NSArray
                     completion(posts_arr, "Got Posts for restaurant \(self.business_id!)")
                 }
             }
@@ -182,15 +205,22 @@ class BusinessDetailsViewController: UIViewController {
     
     @objc func createPost(_ sender: UITapGestureRecognizer) {
         print("tapped create post")
-        self.performSegue(withIdentifier: "post", sender: self)
+//        self.performSegue(withIdentifier: "post", sender: self)
+        let new_post_vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newPost") as! NewPostViewController
+        new_post_vc.business_name = (self.business_details?.name)!
+        new_post_vc.business_id = (self.business_details?.id)!
+        new_post_vc.business_img = (self.business_details?.imageURL)!
+        new_post_vc.rating = (self.business_details?.rating)!
+        self.navigationController?.pushViewController(new_post_vc, animated: true)
     }
     
-    @IBAction func backBtnClick(_ sender: Any) {
-        self.performSegue(withIdentifier: "toExplore", sender: self)
-    }
+//    @IBAction func backBtnClick(_ sender: Any) {
+//        self.performSegue(withIdentifier: "toExplore", sender: self)
+//    }
     
     // MARK: - Navigation
 
+/*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -208,7 +238,7 @@ class BusinessDetailsViewController: UIViewController {
 //            vc.rating = 5.0
         }
     }
-
+*/
 }
 
 extension BusinessDetailsViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -244,6 +274,9 @@ extension BusinessDetailsViewController : UITableViewDataSource, UITableViewDele
         cell.username.text = curr_posts![indexPath.row]["username"]
         cell.postTitle.text = curr_posts![indexPath.row]["title"]
         cell.postContent.text = curr_posts![indexPath.row]["content"]
+        print()
+        cell.rating = Int(curr_posts![indexPath.row]["post-rating"]!)!
+        cell.updateRating()
         cell.selectionStyle = .none
         return cell
     }

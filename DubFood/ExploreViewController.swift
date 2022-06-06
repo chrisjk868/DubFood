@@ -62,8 +62,6 @@ class ExploreViewController: UIViewController {
                     self.business_ids = businessList
                     // Finished updateing business array
                     self.business_arr = value_arr
-//                    print(self.business_ids)
-//                    print(self.business_arr)
                     // Update table view
                     self.restaurants_view.reloadData()
                 }
@@ -74,12 +72,12 @@ class ExploreViewController: UIViewController {
         task.resume()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetails" {
-            let vc = segue.destination as! BusinessDetailsViewController
-            vc.business_id = selected_business_id
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toDetails" {
+//            let vc = segue.destination as! BusinessDetailsViewController
+//            vc.business_id = selected_business_id
+//        }
+//    }
 }
 
 extension ExploreViewController : UITableViewDelegate, UITableViewDataSource {
@@ -94,7 +92,6 @@ extension ExploreViewController : UITableViewDelegate, UITableViewDataSource {
         let location_obj = restaurant!.value(forKey: "location") as! NSDictionary
         let display_address = "\(location_obj.value(forKey: "address1") as! String), \(location_obj.value(forKey: "city") as! String), \(location_obj.value(forKey: "state") as! String)"
         let priceString = restaurant?.value(forKey: "price") as! String
-//        print(priceString)
         let priceLvl = priceString.count
         cell.restaurantName.text = (restaurant?.value(forKey: "name") as! String)
         cell.restaurantLoc.text = display_address
@@ -105,7 +102,10 @@ extension ExploreViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selected_business_id = business_arr?[indexPath.row].value(forKey: "id") as! String
-        self.performSegue(withIdentifier: "toDetails", sender: self)
+//        self.performSegue(withIdentifier: "toDetails", sender: self)
+        let details_vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "restDetails") as! BusinessDetailsViewController
+        details_vc.business_id = selected_business_id
+        self.navigationController?.pushViewController(details_vc, animated: true)
     }
     
 }

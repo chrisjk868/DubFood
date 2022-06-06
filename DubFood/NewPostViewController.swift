@@ -16,6 +16,11 @@ class NewPostViewController: UIViewController {
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var postBtn: UIButton!
     @IBOutlet weak var load_spinner: UIActivityIndicatorView!
+    @IBOutlet weak var starBtnOne: UIButton!
+    @IBOutlet weak var starBtnTwo: UIButton!
+    @IBOutlet weak var starBtnThree: UIButton!
+    @IBOutlet weak var starBtnFour: UIButton!
+    @IBOutlet weak var starBtnFive: UIButton!
     
     let business_id_url = "https://api.yelp.com/v3/businesses/"
     var curr_user = "TestUser" // Change this to current user
@@ -25,6 +30,7 @@ class NewPostViewController: UIViewController {
     var rating = 0.0
     var post : [String:String] = ["":""]
     var db : FirebaseInterface?
+    var user_rating = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +41,6 @@ class NewPostViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.db = FirebaseInterface()
-        self.db!.setValue(self.business_id)
         print(self.business_name)
         print(self.business_id)
         print(self.business_img)
@@ -50,7 +55,9 @@ class NewPostViewController: UIViewController {
         self.post = [
             "username": self.curr_user,
             "title": self.postTitle.text!,
-            "content": self.postContentTxtField.text!
+            "content": self.postContentTxtField.text!,
+            "post-rating": String(self.user_rating),
+            "time": String(NSDate().timeIntervalSinceReferenceDate)
         ]
 
         self.existence(id : self.business_id) { exists, key in
@@ -58,7 +65,7 @@ class NewPostViewController: UIViewController {
                 print("found restaurant")
                 // Append to existing restaurant posts array
                 // Get existing posts for current restaurant
-                self.getCurrentPosts(indexKey: key!) { postsArr, indexKey, reponse in
+                self.getCurrentPosts(rest_id: key!) { postsArr, indexKey, reponse in
                     if postsArr == nil {
                         print("couldn't get posts")
                         return
@@ -86,25 +93,24 @@ class NewPostViewController: UIViewController {
     }
     
     func existence(id: String, completion: @escaping (Bool, String?) -> Void) {
-        self.db!.readEntry("restaurants") { data, response in
+        self.db!.readEntry() { data, response in
             if data == nil {
                 print("Data is nil")
                 print(response!)
                 return
             }
-            var index = 0
             var return_false = true
             let restaurants_data = data as! NSDictionary
-            let restaurants = restaurants_data["restaurants"]!
-            for restaurant in (restaurants as! [NSDictionary]) {
-                let business_id = restaurant["business_id"] as! String
-                print(business_id)
-                if business_id == id {
+            let restaurants = restaurants_data.value(forKey: "restaurants") as! NSDictionary
+            let restaurant_keys = restaurants.allKeys as! [String]
+            if restaurant_keys.contains(self.business_id) {
+                
+            }
+            for (restaurant_key, restaurant) in restaurants {
+                if self.business_id == restaurant_key as! String {
                     return_false = false
-                    print(String(index))
-                    completion(true, String(index))
+                    completion(true, restaurant_key as? String)
                 }
-                index += 1
             }
             if return_false {
                 completion(false, nil)
@@ -113,28 +119,35 @@ class NewPostViewController: UIViewController {
     }
     
     
-    func getCurrentPosts(indexKey: String, completion: @escaping (NSMutableArray?, String, String?) -> Void) {
-        self.db!.readEntry("restaurants") { data, response in
+    func getCurrentPosts(rest_id: String, completion: @escaping (NSMutableArray?, String, String?) -> Void) {
+        self.db!.readEntry() { data, response in
             if data == nil {
                 print("Data is nil")
                 print(response!)
-                completion(nil, indexKey, "failure")
+                completion(nil, rest_id, "failure")
+                print(rest_id)
                 return
             }
-            let rest_dict = data as! NSDictionary
-            let identified_rest = rest_dict["restaurants"] as? NSArray
+            print(rest_id)
+            let databse = data as! NSDictionary
+            let identified_rest = databse["restaurants"] as? [String : NSDictionary]
 //            print(identified_rest![Int(indexKey)!])
-            let rest_obj = identified_rest![Int(indexKey)!] as! NSDictionary
+            let rest_obj = identified_rest![rest_id] as! NSDictionary
             let postsArr = rest_obj["posts"] as! NSMutableArray
-            completion(postsArr, indexKey, "success")
+            print(postsArr)
+            completion(postsArr, rest_id, "success")
         }
     }
     
-    @IBAction func cancelBtnTap(_ sender: Any) {
-        self.postTitle.text = ""
-        self.postContentTxtField.text = ""
-        self.performSegue(withIdentifier:"backToBusiness",sender: self)
-    }
+//    @IBAction func cancelBtnTap(_ sender: Any) {
+//        self.postTitle.text = ""
+//        self.postContentTxtField.text = ""
+//        self.performSegue(withIdentifier:"backToBusiness",sender: self)
+//        let details_vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "restDetails") as! BusinessDetailsViewController
+//        details_vc.business_id = self.business_id
+//        self.navigationController?.pushViewController(details_vc, animated: true)
+//        self.navigationController?.popViewController(animated: true)
+//    }
     
     @IBAction func postBtnTap(_ sender: Any) {
         
@@ -161,14 +174,31 @@ class NewPostViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline:.now() + 2.0, execute: {
                 self.load_spinner.isHidden = true
                 self.load_spinner.stopAnimating()
-               self.performSegue(withIdentifier:"backToBusiness",sender: self)
+                self.navigationController?.popViewController(animated: true)
+//                self.performSegue(withIdentifier:"backToBusiness",sender: self)
+//                let details_vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "restDetails") as! BusinessDetailsViewController
+//                details_vc.business_id = self.business_id
+//                self.navigationController?.pushViewController(details_vc, animated: true)
             })
         }
         
     }
+
+    @IBAction func fiveStarTapped(_ sender: UIButton) {
+        self.user_rating = sender.tag
+        let star_arr : [UIButton] = [starBtnOne, starBtnTwo, starBtnThree, starBtnFour, starBtnFive]
+        for i in 0...4 {
+            if i < sender.tag {
+                star_arr[i].setImage(UIImage(systemName: "star.fill"), for: .normal)
+            } else {
+                star_arr[i].setImage(UIImage(systemName: "star"), for: .normal)
+            }
+        }
+    }
     
     // MARK: - Navigation
-
+    
+/*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -178,4 +208,5 @@ class NewPostViewController: UIViewController {
             vc.business_id = self.business_id
         }
     }
+ */
 }
