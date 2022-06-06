@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="85v-yp-loM">
-                                <rect key="frame" x="15" y="118" width="384" height="287.5"/>
+                                <rect key="frame" x="15" y="118" width="384" height="303.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your username?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Jo-VZ-Hzx">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="20.5"/>
@@ -69,13 +69,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRU-nM-9oq">
-                                        <rect key="frame" x="0.0" y="204.5" width="384" height="34"/>
+                                        <rect key="frame" x="0.0" y="204.5" width="384" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="KVw-Mh-eiy"/>
+                                            <constraint firstAttribute="height" constant="50" id="KVw-Mh-eiy"/>
                                         </constraints>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7J-DB-8VC">
-                                        <rect key="frame" x="0.0" y="253.5" width="384" height="34"/>
+                                        <rect key="frame" x="0.0" y="269.5" width="384" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="81c-UM-ToT"/>
                                         </constraints>
@@ -249,16 +249,16 @@
                                 <rect key="frame" x="50" y="412" width="314" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfD-yP-7am">
-                                        <rect key="frame" x="0.0" y="0.0" width="10.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jrq-Nu-9af">
-                                        <rect key="frame" x="8.5" y="0.0" width="287.5" height="31"/>
+                                        <rect key="frame" x="-2" y="0.0" width="318" height="31"/>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Us9-Fq-rLQ">
-                                        <rect key="frame" x="294" y="0.0" width="20" height="30"/>
+                                        <rect key="frame" x="314" y="0.0" width="0.0" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -364,7 +364,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RFl-P7-PiX">
                                         <rect key="frame" x="0.0" y="91" width="265.5" height="20.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="University" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aT2-nl-ddB">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="University: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aT2-nl-ddB">
                                                 <rect key="frame" x="0.0" y="0.0" width="95" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -396,7 +396,9 @@
                     <tabBarItem key="tabBarItem" title="Profile" selectedImage="person.circle" catalog="system" id="hSi-1C-vSM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="emailLabel" destination="YBJ-ft-sNW" id="e5e-hE-pdo"/>
                         <outlet property="profileImage" destination="DBf-IZ-RZe" id="mNV-TX-PXC"/>
+                        <outlet property="universityLabel" destination="TjC-F5-McW" id="UWf-Y7-221"/>
                         <outlet property="usernameLabel" destination="LeH-rP-L7I" id="ILi-HB-bzS"/>
                     </connections>
                 </viewController>
