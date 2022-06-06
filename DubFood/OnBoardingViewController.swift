@@ -30,11 +30,39 @@ class OnBoardingViewController: UIViewController, CLLocationManagerDelegate {
         university.dataSource = self
 
         // Do any additional setup after loading the view.
+        
+        // checking if the user has already been onboarded (has a local file saved)
+        var userExists = false
+        
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let url = NSURL(fileURLWithPath: path)
+        if let pathComponent = url.appendingPathComponent("userInfo.json") {
+            let filePath = pathComponent.path
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: filePath) {
+                print("LOCAL FILE AVAILABLE")
+                userExists = true
+            } else {
+                print("LOCAL FILE NOT AVAILABLE")
+            }
+        } else {
+            print("FILE PATH NOT AVAILABLE")
+        }
+        
+        
+        
+        if userExists {
+            // present the storyboard
+            let tabBarVC = storyboard?.instantiateViewController(identifier: "TabBarVC") as! TabBarViewController
+            tabBarVC.modalPresentationStyle = .fullScreen
+            present(tabBarVC, animated: false)
+        }
+        
 
         // Get User Location
 
         //HOW TO INITIATE THE DATABASE
-        let database = FirebaseInterface()
+        // let database = FirebaseInterface()
 
         let location = CLLocationManager()
         location.delegate = self
@@ -87,16 +115,51 @@ class OnBoardingViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     @IBAction func submitBtnClick(_ sender: Any) {
-        saveUserDataLocally()
+        checkValues()
+    }
+    
+    // a function that ensures that all onboarding items have a value entered by the user
+    // if all values exist: continues
+    // if no value: shows an alert
+    func checkValues() {
+        var complete = true
+        
+        // checking the username & email to make sure they are not blank
+        if self.username.text ?? "" == "" {
+            complete = false
+        } else if self.email.text ?? "" == "" {
+            complete = false
+        }
+        
+        // if complete is true, save user data
+        if complete {
+            saveUserDataLocally()
+            
+            // instantiate the new view controller
+            let tabBarVC = storyboard?.instantiateViewController(identifier: "TabBarVC") as! TabBarViewController
+            tabBarVC.modalPresentationStyle = .fullScreen
+            present(tabBarVC, animated: true)
+
+            
+            
+        } else { // make an alert!!
+            let alert = UIAlertController(title: "Error", message: "Please make sure that you have filled in all required fields.", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK",
+                                                              style: .default,
+                                                              handler: { _ in NSLog("\"OK\" pressed.")
+
+                                }))
+                                self.present(alert, animated: true, completion: {
+                                  NSLog("The completion handler fired")
+                                })
+        }
+        
     }
 
     func saveUserDataLocally() {
-        print("SELECTED UNIVERSITY: \(self.selectedUniversity)")
-        print("USERNAME: \(self.username.text ?? "")")
-        print("EMAIL: \(self.email.text ?? "")")
-
-
-        // let user : User = User(username: self.username.text ?? "", email: self.email.text ?? "", university: self.selectedUniversity)
+//        print("SELECTED UNIVERSITY: \(self.selectedUniversity)")
+//        print("USERNAME: \(self.username.text ?? "")")
+//        print("EMAIL: \(self.email.text ?? "")")
 
         // format the user data into a json
         let userInfo = "{\"username\":\"\(self.username.text ?? "")\", \"email\":\"\(self.email.text ?? "")\", \"university\":\"\(self.selectedUniversity)\"}"
@@ -112,8 +175,6 @@ class OnBoardingViewController: UIViewController, CLLocationManagerDelegate {
                     print("There was an error writing to a local file: \(error)")
                 }
             }
-        } catch {
-            print("Something went wrong: \(error)")
         }
     }
 
@@ -132,8 +193,8 @@ class OnBoardingViewController: UIViewController, CLLocationManagerDelegate {
 
 extension OnBoardingViewController : UIPickerViewDelegate {
 
-    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
-
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        //print("SELECTED ROW: \(row)")
         self.selectedUniversity = pickerData[row]
         return pickerData[row]
     }
@@ -147,6 +208,7 @@ extension OnBoardingViewController : UIPickerViewDataSource {
     }
 
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        //print("COUNT: \(pickerData.count)")
         return pickerData.count
     }
 }

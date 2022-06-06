@@ -26,11 +26,11 @@
 		D9F10ECC283DB7AE00A8E968 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9F10ECA283DB7AE00A8E968 /* LaunchScreen.storyboard */; };
 		D9F10ED82841586400A8E968 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10ED72841586400A8E968 /* OnBoardingViewController.swift */; };
 		D9F10EDA284160C600A8E968 /* RecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10ED9284160C600A8E968 /* RecViewController.swift */; };
-		D9F10EDC284160D600A8E968 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EDB284160D600A8E968 /* NewsViewController.swift */; };
 		D9F10EDE2842EC3300A8E968 /* YelpBusinessSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F10EDD2842EC3300A8E968 /* YelpBusinessSearch.swift */; };
 		E36F85032846AF1F00F18C4C /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E36F85022846AF1F00F18C4C /* FirebaseDatabaseSwift */; };
 		E36F85052846AF1F00F18C4C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E36F85042846AF1F00F18C4C /* FirebaseFirestoreSwift */; };
 		E36F85072846B18500F18C4C /* FirebaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36F85062846B18500F18C4C /* FirebaseInterface.swift */; };
+		E3A3FB13284EA43900DA9EBA /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A3FB12284EA43900DA9EBA /* NewsFeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,9 +55,9 @@
 		D9F10ECD283DB7AE00A8E968 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9F10ED72841586400A8E968 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		D9F10ED9284160C600A8E968 /* RecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecViewController.swift; sourceTree = "<group>"; };
-		D9F10EDB284160D600A8E968 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		D9F10EDD2842EC3300A8E968 /* YelpBusinessSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpBusinessSearch.swift; sourceTree = "<group>"; };
 		E36F85062846B18500F18C4C /* FirebaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseInterface.swift; sourceTree = "<group>"; };
+		E3A3FB12284EA43900DA9EBA /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +100,6 @@
 				D9F10ED72841586400A8E968 /* OnBoardingViewController.swift */,
 				D9F10EC3283DB7AD00A8E968 /* ExploreViewController.swift */,
 				D9BBC404284D4DA60036C6A8 /* RestaurantTableViewCell.swift */,
-				D9F10EDB284160D600A8E968 /* NewsViewController.swift */,
 				D9F10ED9284160C600A8E968 /* RecViewController.swift */,
 				9DF6BEAD2849542800DD1D55 /* BusinessDetailsViewController.swift */,
 				D9BBC402284C70640036C6A8 /* PostsTableViewCell.swift */,
@@ -115,6 +114,7 @@
 				D9F10EC8283DB7AE00A8E968 /* Assets.xcassets */,
 				D9508DE428485D3E003788F5 /* GoogleService-Info.plist */,
 				D9F10ECD283DB7AE00A8E968 /* Info.plist */,
+				E3A3FB12284EA43900DA9EBA /* NewsFeedViewController.swift */,
 			);
 			path = DubFood;
 			sourceTree = "<group>";
@@ -201,6 +201,7 @@
 				D9F10EDE2842EC3300A8E968 /* YelpBusinessSearch.swift in Sources */,
 				9DF6BEAC284951D500DD1D55 /* NewPostViewController.swift in Sources */,
 				850A5CE2284690C700065BD3 /* UserProfileViewController.swift in Sources */,
+				E3A3FB13284EA43900DA9EBA /* NewsFeedViewController.swift in Sources */,
 				D9F10EC4283DB7AD00A8E968 /* ExploreViewController.swift in Sources */,
 				D9169FE0284D84C1005EF471 /* TabBarViewController.swift in Sources */,
 				D9F10EDA284160C600A8E968 /* RecViewController.swift in Sources */,
@@ -211,7 +212,6 @@
 				E36F85072846B18500F18C4C /* FirebaseInterface.swift in Sources */,
 				9DF6BEB02849543C00DD1D55 /* BusinessDecode.swift in Sources */,
 				D9508DE7284AFB35003788F5 /* ImageCollectionViewCell.swift in Sources */,
-				D9F10EDC284160D600A8E968 /* NewsViewController.swift in Sources */,
 				D9F10EC2283DB7AD00A8E968 /* SceneDelegate.swift in Sources */,
 				D9BBC405284D4DA70036C6A8 /* RestaurantTableViewCell.swift in Sources */,
 				D9F10ED82841586400A8E968 /* OnBoardingViewController.swift in Sources */,

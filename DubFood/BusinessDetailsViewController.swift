@@ -19,6 +19,7 @@ class BusinessDetailsViewController: UIViewController {
     @IBOutlet weak var restaurant_name: UILabel!
     @IBOutlet weak var add_comment: UIImageView!
     @IBOutlet weak var usr_posts: UITableView!
+    @IBOutlet var userRating: UIStackView!
     
     var business_details : Details? = nil
     var business_id : String? =  "WavvLdfdP6g8aZTtbBQHTw" // replace with business id here
@@ -37,7 +38,6 @@ class BusinessDetailsViewController: UIViewController {
     // auto scroll timer
     var timer : Timer?
     var currentCellIndex = 0
-    
     
     // database
     var db : FirebaseInterface?
@@ -77,9 +77,27 @@ class BusinessDetailsViewController: UIViewController {
                 return
             }
             print(response)
+            
             self.curr_posts = postsArr as? [[String : String]]
+            self.calculateUserAverage(self.curr_posts!)
             self.usr_posts.reloadData()
         }
+    }
+    
+    func calculateUserAverage(_ posts: [[String: String]]) -> Double{
+        var count = 0.0
+        
+        if(posts.count == 0){
+            return 0.0
+        }
+
+        for post in posts{
+            count += Double(post["post-rating"]!)!
+        }
+        
+        let average: Double = count / Double(posts.count)
+        
+        return average
     }
     
     override open var shouldAutorotate: Bool {
@@ -95,7 +113,7 @@ class BusinessDetailsViewController: UIViewController {
                 print("data is nil")
                 return
             }
-            
+            print(data)
             do {
                 let details = try JSONDecoder().decode(Details.self, from: data)
                 self.business_details = details
@@ -109,7 +127,10 @@ class BusinessDetailsViewController: UIViewController {
                     self.restaurant_name.text = self.business_details?.name!
                     self.location.text = self.business_details?.location?.displayAddress.joined(separator: ", ")
                     self.descr.text = self.updateDescr()
-                    self.updateRating()
+                    self.updateRating(rating: (self.business_details?.rating)!, starStackView: self.star_rating)
+                    
+                    let averageUserRating = self.calculateUserAverage(self.curr_posts!)
+                    self.updateRating(rating: averageUserRating, starStackView: self.userRating)
                 }
             } catch {
                 print(error)
@@ -119,19 +140,13 @@ class BusinessDetailsViewController: UIViewController {
         task.resume()
     }
     
-    func updateRating() {
-        let denominator = 2.0
-        let stars = round((self.business_details?.rating)! * denominator) / denominator
-        var full_stars = Int(floor(stars))
-        var half_stars = Int((stars - Double(full_stars)) / 0.5)
-        
-        print(self.business_details?.rating)
-        print(full_stars)
-        print(half_stars)
+    func updateRating(rating: Double, starStackView: UIStackView) {
+        var full_stars = Int(rating)
+        var half_stars = rating.truncatingRemainder(dividingBy: 1.0)
         
         // Iterate over stars stack view
         var star_index = 1
-        for item in self.star_rating.arrangedSubviews {
+        for item in starStackView.arrangedSubviews {
             if item is UILabel {
                 continue
             } else {
@@ -140,20 +155,20 @@ class BusinessDetailsViewController: UIViewController {
                     let full_star_view = UIImageView(image: self.star_full)
                     full_star_view.tintColor = .systemBlue
                     full_star_view.frame = CGRect(x: 0, y: 0, width: 22, height: 14)
-                    self.star_rating.insertArrangedSubview(full_star_view, at: star_index)
+                    starStackView.insertArrangedSubview(full_star_view, at: star_index)
                     full_stars -= 1
                 } else {
                     if half_stars > 0 {
                         let half_star_view = UIImageView(image: self.star_half)
                         half_star_view.tintColor = .systemBlue
                         half_star_view.frame = CGRect(x: 0, y: 0, width: 22, height: 14)
-                        self.star_rating.insertArrangedSubview(half_star_view, at: star_index)
+                        starStackView.insertArrangedSubview(half_star_view, at: star_index)
                         half_stars -= 1
                     } else {
                         let empty_star_view = UIImageView(image: self.star_empty)
                         empty_star_view.tintColor = .systemBlue
                         empty_star_view.frame = CGRect(x: 0, y: 0, width: 22, height: 14)
-                        self.star_rating.insertArrangedSubview(empty_star_view, at: star_index)
+                        starStackView.insertArrangedSubview(empty_star_view, at: star_index)
                     }
                 }
                 star_index += 1
@@ -161,6 +176,7 @@ class BusinessDetailsViewController: UIViewController {
         }
         
     }
+    
     
     func updateDescr() -> String {
         let categories = self.business_details?.categories
