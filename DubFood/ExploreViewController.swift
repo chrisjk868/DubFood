@@ -70,6 +70,7 @@ class ExploreViewController: UIViewController {
             }
             do {
                 print("response: \((response! as! HTTPURLResponse).statusCode)")
+                print("API Calls Remaining: \((response! as! HTTPURLResponse).value(forHTTPHeaderField: "RateLimit-Remaining"))")
                 if (response! as! HTTPURLResponse).statusCode == 200 {
                     let data = try JSONSerialization.jsonObject(with: data) as! NSDictionary
                     print("url: \(url)")
