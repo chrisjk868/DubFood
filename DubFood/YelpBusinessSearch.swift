@@ -52,7 +52,7 @@ class YelpBusinessSearch {
         if latitude != nil && longitude != nil {
             let path = "/businesses/search?"
             
-            let lat_long = "latitude=\(self.latitude!)&longitude=\(self.longitude!)&limit=25"
+            let lat_long = "latitude=\(self.latitude!)&longitude=\(self.longitude!)&limit=50"
             
             let radiusPath = "&radius=\(radius!)"
             
