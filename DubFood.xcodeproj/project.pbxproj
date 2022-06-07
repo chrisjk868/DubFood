@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		850A5CE2284690C700065BD3 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A5CE1284690C700065BD3 /* UserProfileViewController.swift */; };
 		850A5CE42846913200065BD3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A5CE32846913200065BD3 /* User.swift */; };
+		8517A4DD284EF3D400057E4B /* ChangeUserProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8517A4DC284EF3D300057E4B /* ChangeUserProfileSettingsViewController.swift */; };
 		9DF6BEAC284951D500DD1D55 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6BEAB284951D500DD1D55 /* NewPostViewController.swift */; };
 		9DF6BEAE2849542800DD1D55 /* BusinessDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6BEAD2849542800DD1D55 /* BusinessDetailsViewController.swift */; };
 		9DF6BEB02849543C00DD1D55 /* BusinessDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6BEAF2849543C00DD1D55 /* BusinessDecode.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		850A5CE1284690C700065BD3 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		850A5CE32846913200065BD3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8517A4DC284EF3D300057E4B /* ChangeUserProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUserProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		9DF6BEAB284951D500DD1D55 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		9DF6BEAD2849542800DD1D55 /* BusinessDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDetailsViewController.swift; sourceTree = "<group>"; };
 		9DF6BEAF2849543C00DD1D55 /* BusinessDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDecode.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				9DF6BEAD2849542800DD1D55 /* BusinessDetailsViewController.swift */,
 				D9BBC402284C70640036C6A8 /* PostsTableViewCell.swift */,
 				D9508DE6284AFB35003788F5 /* ImageCollectionViewCell.swift */,
+				8517A4DC284EF3D300057E4B /* ChangeUserProfileSettingsViewController.swift */,
 				D9508DE8284B0A1B003788F5 /* BusinessDetailsImageView.swift */,
 				9DF6BEAF2849543C00DD1D55 /* BusinessDecode.swift */,
 				9DF6BEAB284951D500DD1D55 /* NewPostViewController.swift */,
@@ -216,6 +219,7 @@
 				D9BBC405284D4DA70036C6A8 /* RestaurantTableViewCell.swift in Sources */,
 				D9F10ED82841586400A8E968 /* OnBoardingViewController.swift in Sources */,
 				D9BBC403284C70640036C6A8 /* PostsTableViewCell.swift in Sources */,
+				8517A4DD284EF3D400057E4B /* ChangeUserProfileSettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
