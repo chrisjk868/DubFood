@@ -28,6 +28,8 @@ class ChangeUserProfileSettingsViewController: UIViewController {
         newUniversityPicker.delegate = self
         newUniversityPicker.dataSource = self
         
+        self.hideKeyboardWhenTappedAround()
+        
         // get old user profile info
         getOldUserInfo()
         
@@ -117,17 +119,6 @@ class ChangeUserProfileSettingsViewController: UIViewController {
             }
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-            super.viewWillDisappear(animated)
-
-            if let firstVC = presentingViewController as? UserProfileViewController {
-                DispatchQueue.main.async {
-                    firstVC.viewDidLoad()
-                }
-            }
-        }
-        
 
     /*
     // MARK: - Navigation
@@ -143,10 +134,14 @@ class ChangeUserProfileSettingsViewController: UIViewController {
 
 extension ChangeUserProfileSettingsViewController : UIPickerViewDelegate {
 
+    //Items in picker view
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        //print("SELECTED ROW: \(row)")
-        self.university = pickerData[row]
         return pickerData[row]
+    }
+    
+    //Capture the picker view selection
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.university = pickerData[row]
     }
 
 }

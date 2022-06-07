@@ -43,6 +43,7 @@ class NewPostViewController: UIViewController {
         self.postBtn.isEnabled = true
         self.postTitle.borderStyle = UITextField.BorderStyle.roundedRect
         self.postContentTxtField.borderStyle = UITextField.BorderStyle.roundedRect
+        self.hideKeyboardWhenTappedAround()
 
         // Do any additional setup after loading the view.
         self.db = FirebaseInterface()
@@ -62,6 +63,7 @@ class NewPostViewController: UIViewController {
                  print("There was an error getting user data from the local file: \(error)")
              }
          }
+        
     }
     
     override open var shouldAutorotate: Bool {
@@ -191,6 +193,14 @@ class NewPostViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline:.now() + 2.0, execute: {
                 self.load_spinner.isHidden = true
                 self.load_spinner.stopAnimating()
+                
+                // access & reload previous vc
+//                if let navController = self.navigationController, navController.viewControllers.count >= 2 {
+//                    let viewController = navController.viewControllers[navController.viewControllers.count - 2] as! BusinessDetailsViewController
+//                    viewController.updateRating(rating: viewController.calculateUserAverage(viewController.curr_posts!), starStackView: viewController.userRating)
+//                }
+                
+                // pop current vc
                 self.navigationController?.popViewController(animated: true)
 //                self.performSegue(withIdentifier:"backToBusiness",sender: self)
 //                let details_vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "restDetails") as! BusinessDetailsViewController
@@ -226,4 +236,16 @@ class NewPostViewController: UIViewController {
         }
     }
  */
+}
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }

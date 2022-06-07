@@ -82,6 +82,8 @@ class BusinessDetailsViewController: UIViewController {
             self.calculateUserAverage(self.curr_posts!)
             self.usr_posts.reloadData()
         }
+        // updateRating(rating: self.calculateUserAverage(self.curr_posts!), starStackView: userRating)
+        
     }
     
     func calculateUserAverage(_ posts: [[String: String]]) -> Double{
@@ -117,7 +119,9 @@ class BusinessDetailsViewController: UIViewController {
             do {
                 let details = try JSONDecoder().decode(Details.self, from: data)
                 self.business_details = details
-                self.img_url_arr = details.photos
+                if details.photos != nil {
+                    self.img_url_arr = details.photos
+                }
                 DispatchQueue.main.async {
                     if self.img_url_arr!.count > 1 {
                         self.timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(self.slideToNext), userInfo: nil, repeats: true)

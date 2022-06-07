@@ -21,7 +21,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="85v-yp-loM">
                                 <rect key="frame" x="15" y="118" width="384" height="353.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your username?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Jo-VZ-Hzx">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you want your username to be?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Jo-VZ-Hzx">
                                         <rect key="frame" x="0.0" y="0.0" width="384" height="20.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20.5" id="cgL-g9-Opy"/>
@@ -453,23 +453,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thz-Yn-WhH">
-                                <rect key="frame" x="114.5" y="115.5" width="185" height="31"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqz-NW-wNv">
-                                        <rect key="frame" x="0.0" y="0.0" width="92.5" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="New Post"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdy-b2-J0W">
-                                        <rect key="frame" x="92.5" y="0.0" width="92.5" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="tinted" title="Filter Feed"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yTX-ZO-D6z">
-                                <rect key="frame" x="20" y="154" width="374" height="639"/>
+                                <rect key="frame" x="20" y="104" width="374" height="689"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userPostCell" rowHeight="125" id="0jk-CF-tT0" customClass="PostsTableViewCell" customModule="DubFood" customModuleProvider="target">
@@ -599,12 +584,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IUs-Ri-5t3" firstAttribute="top" secondItem="3kp-af-zgq" secondAttribute="top" constant="10" id="0QM-c2-XUe"/>
-                            <constraint firstItem="yTX-ZO-D6z" firstAttribute="top" secondItem="thz-Yn-WhH" secondAttribute="bottom" constant="7.5" id="3Oq-Nc-FFG"/>
                             <constraint firstItem="3kp-af-zgq" firstAttribute="trailing" secondItem="yTX-ZO-D6z" secondAttribute="trailing" constant="20" id="6tQ-DO-TUD"/>
-                            <constraint firstItem="thz-Yn-WhH" firstAttribute="centerX" secondItem="yqd-Xx-zc7" secondAttribute="centerX" id="aMK-5N-QhR"/>
+                            <constraint firstItem="yTX-ZO-D6z" firstAttribute="top" secondItem="IUs-Ri-5t3" secondAttribute="bottom" constant="20" id="HN9-0D-PKU"/>
                             <constraint firstItem="3kp-af-zgq" firstAttribute="bottom" secondItem="yTX-ZO-D6z" secondAttribute="bottom" constant="20" id="czl-vG-NoY"/>
                             <constraint firstItem="yTX-ZO-D6z" firstAttribute="leading" secondItem="3kp-af-zgq" secondAttribute="leading" constant="20" id="dWf-2V-Aa1"/>
-                            <constraint firstItem="thz-Yn-WhH" firstAttribute="top" secondItem="IUs-Ri-5t3" secondAttribute="bottom" constant="31.5" id="r83-qW-Nq6"/>
                             <constraint firstItem="IUs-Ri-5t3" firstAttribute="leading" secondItem="3kp-af-zgq" secondAttribute="leading" constant="20" id="v3r-Z1-jxM"/>
                         </constraints>
                     </view>
@@ -617,7 +600,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zui-T3-QGx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="114" y="818"/>
+            <point key="canvasLocation" x="113.04347826086958" y="817.63392857142856"/>
         </scene>
         <!--New Post View Controller-->
         <scene sceneID="l0c-D9-h6d">
@@ -939,13 +922,13 @@
                                                                         <constraint firstAttribute="width" constant="50" id="9Qj-tW-08I"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Post Content" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOh-TT-13T">
-                                                                    <rect key="frame" x="65" y="56" width="259" height="12"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post Content" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOh-TT-13T">
+                                                                    <rect key="frame" x="65" y="56" width="259" height="7"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Post Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8p-S4-dhd">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8p-S4-dhd">
                                                                     <rect key="frame" x="10" y="5" width="314" height="17"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="17" id="CCQ-fl-47R"/>
@@ -960,8 +943,8 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ezy-hD-KhH">
-                                                                    <rect key="frame" x="65" y="31" width="75" height="20"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ezy-hD-KhH">
+                                                                    <rect key="frame" x="65" y="31" width="75" height="15"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4JX-qO-4fK">
                                                                             <rect key="frame" x="0.0" y="-0.5" width="15" height="15"/>
@@ -1429,7 +1412,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="OCM-lw-4S7">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarVC" id="57U-MT-FYH" customClass="TabBarViewController" customModule="DubFood" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarVC" id="57U-MT-FYH" customClass="TabBarViewController" customModule="DubFood" customModuleProvider="target" colorLabel="IBBuiltInLabel-Purple" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="2Ou-Su-2Cb"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xdo-AU-ihl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -1509,6 +1492,7 @@
             <point key="canvasLocation" x="2531.8840579710145" y="817.63392857142856"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.47443177580000001" green="0.2716139031" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
         <image name="dollarsign.circle" catalog="system" width="128" height="121"/>
         <image name="fork.knife.circle.fill" catalog="system" width="128" height="121"/>

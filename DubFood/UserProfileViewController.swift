@@ -26,8 +26,7 @@ class UserProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.userSettingsVC = self.tabBarController?.children[3].children[0] as! UserProfileViewController
-
+        self.userSettingsVC = (self.tabBarController?.children[3].children[0] as! UserProfileViewController)
         
         getUserInfo()
         // Do any additional setup after loading the view.

@@ -35,10 +35,21 @@ class ExploreViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            // delay
+            print("2 sec delay")
+            self.makeRequest(coordinates: self.location)
+        }
+        
         print("====================view about to appear========")
         print(filters)
         print(radiusVal)
-        makeRequest(coordinates: location)
+        
+        
+        // debugging delay
+
+        
     }
 
     func makeRequest(coordinates : (Double, Double)) {
@@ -58,23 +69,28 @@ class ExploreViewController: UIViewController {
                 return
             }
             do {
-                let data = try JSONSerialization.jsonObject(with: data) as! NSDictionary
-                let value_arr = data.value(forKey: "businesses") as! [NSDictionary]
-                let value = data.value(forKey: "businesses") as! NSArray
+                print("response: \((response! as! HTTPURLResponse).statusCode)")
+                if (response! as! HTTPURLResponse).statusCode == 200 {
+                    let data = try JSONSerialization.jsonObject(with: data) as! NSDictionary
+                    print("url: \(url)")
+                    print("data: \(data)")
+                    let value_arr = data.value(forKey: "businesses") as! [NSDictionary]
+                    let value = data.value(forKey: "businesses") as! NSArray
 
-                for i in value {
-                    let location = i as! NSDictionary
-                    businessList.append(location.value(forKey: "id")! as! String)
+                    for i in value {
+                        let location = i as! NSDictionary
+                        businessList.append(location.value(forKey: "id")! as! String)
+                    }
+                    DispatchQueue.main.async {
+                        self.business_ids = businessList
+                        // Finished updateing business array
+                        self.business_arr = value_arr
+                        // Update table view
+                        print(self.restaurants_view)
+                        self.restaurants_view.reloadData()
+                    }
                 }
-
-                DispatchQueue.main.async {
-                    self.business_ids = businessList
-                    // Finished updateing business array
-                    self.business_arr = value_arr
-                    // Update table view
-                    print(self.restaurants_view)
-                    self.restaurants_view.reloadData()
-                }
+                
             } catch {
                 print("error: \(error)")
             }

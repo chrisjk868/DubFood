@@ -28,6 +28,8 @@ class OnBoardingViewController: UIViewController, CLLocationManagerDelegate {
 
         university.delegate = self
         university.dataSource = self
+        
+        self.hideKeyboardWhenTappedAround()
 
         // Do any additional setup after loading the view.
         
@@ -60,9 +62,6 @@ class OnBoardingViewController: UIViewController, CLLocationManagerDelegate {
         
 
         // Get User Location
-
-        //HOW TO INITIATE THE DATABASE
-        // let database = FirebaseInterface()
 
         let location = CLLocationManager()
         location.delegate = self
@@ -157,10 +156,6 @@ class OnBoardingViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func saveUserDataLocally() {
-//        print("SELECTED UNIVERSITY: \(self.selectedUniversity)")
-//        print("USERNAME: \(self.username.text ?? "")")
-//        print("EMAIL: \(self.email.text ?? "")")
-
         // format the user data into a json
         let userInfo = "{\"username\":\"\(self.username.text ?? "")\", \"email\":\"\(self.email.text ?? "")\", \"university\":\"\(self.selectedUniversity)\"}"
 
@@ -193,10 +188,14 @@ class OnBoardingViewController: UIViewController, CLLocationManagerDelegate {
 
 extension OnBoardingViewController : UIPickerViewDelegate {
 
+    //Items in picker view
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        //print("SELECTED ROW: \(row)")
-        self.selectedUniversity = pickerData[row]
         return pickerData[row]
+    }
+    
+    //Capture the picker view selection
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.selectedUniversity = pickerData[row]
     }
 
 }
