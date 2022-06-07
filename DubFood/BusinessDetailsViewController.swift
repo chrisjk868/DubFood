@@ -157,20 +157,20 @@ class BusinessDetailsViewController: UIViewController {
                 item.isHidden = true
                 if full_stars > 0 {
                     let full_star_view = UIImageView(image: self.star_full)
-                    full_star_view.tintColor = .systemBlue
+                    full_star_view.tintColor = UIColor(red: 1, green: 0.8, blue: 0, alpha: 1.0)
                     full_star_view.frame = CGRect(x: 0, y: 0, width: 22, height: 14)
                     starStackView.insertArrangedSubview(full_star_view, at: star_index)
                     full_stars -= 1
                 } else {
                     if half_stars > 0 {
                         let half_star_view = UIImageView(image: self.star_half)
-                        half_star_view.tintColor = .systemBlue
+                        half_star_view.tintColor = UIColor(red: 1, green: 0.8, blue: 0, alpha: 1.0)
                         half_star_view.frame = CGRect(x: 0, y: 0, width: 22, height: 14)
                         starStackView.insertArrangedSubview(half_star_view, at: star_index)
                         half_stars -= 1
                     } else {
                         let empty_star_view = UIImageView(image: self.star_empty)
-                        empty_star_view.tintColor = .systemBlue
+                        empty_star_view.tintColor = UIColor(red: 1, green: 0.8, blue: 0, alpha: 1.0)
                         empty_star_view.frame = CGRect(x: 0, y: 0, width: 22, height: 14)
                         starStackView.insertArrangedSubview(empty_star_view, at: star_index)
                     }

@@ -42,14 +42,14 @@ class PostsTableViewCell: UITableViewCell {
             item.isHidden = true
             if fill > 0 {
                 let full_star_view = UIImageView(image: UIImage(systemName: "star.fill"))
-                full_star_view.tintColor = .systemBlue
+                full_star_view.tintColor = UIColor(red: 1, green: 0.8, blue: 0, alpha: 1.0)
                 full_star_view.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
                 postRating.insertArrangedSubview(full_star_view, at: index)
                 fill -= 1
             } else {
                 if empty > 0 {
                     let empty_star_view = UIImageView(image: UIImage(systemName: "star"))
-                    empty_star_view.tintColor = .systemBlue
+                    empty_star_view.tintColor =  UIColor(red: 1, green: 0.8, blue: 0, alpha: 1.0)
                     empty_star_view.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
                     postRating.insertArrangedSubview(empty_star_view, at: index)
                     empty -= 1
