@@ -73,7 +73,7 @@ class NewPostViewController: UIViewController {
     func writePostToDB() {
         self.post = [
             "username": self.curr_user,
-            "title": self.postTitle.text!,
+            "title": self.business_name,
             "content": self.postContentTxtField.text!,
             "post-rating": String(self.user_rating),
             "time": String(NSDate().timeIntervalSinceReferenceDate)
