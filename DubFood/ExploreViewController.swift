@@ -66,7 +66,7 @@ class ExploreViewController: UIViewController {
 //            self.makeRequest(coordinates: self.location)
 //        }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             // delay
             print("2 sec delay")
             let pulseView = self.view.viewWithTag(100)
