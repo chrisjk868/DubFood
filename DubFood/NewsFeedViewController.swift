@@ -8,7 +8,7 @@
 import UIKit
 
 class NewsFeedViewController: UIViewController {
-
+    
     var db : FirebaseInterface = FirebaseInterface()
     
     var postsArr: [NSDictionary]? = []
@@ -17,11 +17,11 @@ class NewsFeedViewController: UIViewController {
     
     
     
-    var currentPosts: NSDictionary = [:]
-   
+    var currentPosts: [NSDictionary] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -31,37 +31,61 @@ class NewsFeedViewController: UIViewController {
                 return
             }
             
-            self.currentPosts = rest_arr!
-            self.sortDates()
-            self.updatePostUI(self.currentPosts)
-        }
-        tableView.reloadData()
-    }
-    
-    func sortDates(){
-    
-    }
-
-    func updatePostUI(_ rest_data: NSDictionary){
-        let rest_array = rest_data.allValues as! [NSDictionary]
-        
-        var posts_arr: [NSArray] = []
-
-
-        
-        for rest in rest_array {
-            posts_arr.append(rest.value(forKey: "posts") as! NSArray)
-        }
-       
-        for curr_rest_post in posts_arr{
-            for post in curr_rest_post {
-                print(post)
-                self.postsArr?.append(post as! NSDictionary)
+            var convertedArrayDict: [NSDictionary] = []
+            
+            for key in rest_arr!.allKeys{
+                let rest = (rest_arr?.value(forKey: key as! String) as! NSDictionary)
+                
+                let value = rest.value(forKey: "posts") as! NSArray
+                
+                if(value.count > 1){
+                    for post in value{
+                        convertedArrayDict.append(post as! NSDictionary)
+                    }
+                } else {
+                    convertedArrayDict.append(value[0] as! NSDictionary)
+                }
+                
             }
+            
+            self.currentPosts = convertedArrayDict
+            self.updatePostUI(self.sortDates())
         }
         tableView.reloadData()
     }
-
+    
+    func sortDates() -> [NSDictionary]{
+        
+        let orderedPosts = currentPosts.sorted(by: {postSort(p1: $0, p2: $1)})
+        
+        return orderedPosts
+    }
+    
+    func postSort(p1:NSDictionary, p2:NSDictionary) -> Bool {
+        guard let s1 = Double(p1.value(forKey: "time") as! Substring), let s2 = Double(p2.value(forKey: "time") as! Substring) else {
+            return false
+        }
+        
+        if s1 == s2 {
+            guard let g1 = Double(p1["time"]! as! Substring), let g2 = Double(p2["time"]! as! Substring) else {
+                return false
+            }
+            return g1 > g2
+        }
+        
+        return s1 > s2
+    }
+    
+    func updatePostUI(_ rest_data: [NSDictionary]){
+        for post in rest_data{
+            postsArr?.append(post)
+        }
+        
+        print(postsArr)
+        
+        tableView.reloadData()
+    }
+    
     func getPosts(completion: @escaping (NSDictionary?) -> Void) {
         self.db.readEntry() { data, response in
             if data == nil {
@@ -71,7 +95,7 @@ class NewsFeedViewController: UIViewController {
             }
             let rest_dict = data as! NSDictionary
             let rest_arr = rest_dict["restaurants"] as! NSDictionary
-    
+            
             completion(rest_arr)
         }
     }

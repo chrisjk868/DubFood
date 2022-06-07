@@ -36,6 +36,7 @@
             <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.54901754859999996" green="0.3215768933" blue="0.9999793172" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="logo" width="250" height="250"/>
         <systemColor name="systemBackgroundColor">

@@ -35,13 +35,21 @@ class RecViewController: UIViewController {
     
     @IBAction func buttonOnClick(_ sender: UIButton) {
         print((sender.titleLabel?.text!)!)
-        
-        if let index = categories?.firstIndex(of: (sender.titleLabel?.text!)!) {
+        var category = (sender.titleLabel?.text!)!
+        category = category.lowercased()
+        if category == "fast food" {
+            category = "hotdogs"
+        } else if category == "indian" {
+            category = "indpak"
+        } else if category == "gluten-free" {
+            category = "gluten_free"
+        }
+        if let index = categories?.firstIndex(of: category) {
             categories?.remove(at: index)
-            sender.backgroundColor = UIColor.systemGray2
+            sender.backgroundColor = UIColor.systemGray5
         } else {
-            categories?.append("\((sender.titleLabel?.text!)!)")
-            sender.backgroundColor = UIColor.darkGray
+            categories?.append(category)
+            sender.backgroundColor = UIColor.systemGray2
         }
         ExploreVC!.filters = categories!
     }
