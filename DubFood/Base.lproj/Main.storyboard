@@ -830,9 +830,6 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LwO-Vg-MfM">
                                         <rect key="frame" x="50" y="0.0" width="300" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="LzV-rG-pRM"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -850,9 +847,6 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0c-Sx-xog">
                                         <rect key="frame" x="50" y="0.0" width="300" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="ne9-PO-5lb"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
