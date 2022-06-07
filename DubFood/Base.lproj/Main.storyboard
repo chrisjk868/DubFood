@@ -148,6 +148,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m8E-p5-YAO">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="31"/>
+                                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="gray" title="Breakfast"/>
                                                 <connections>
@@ -156,6 +157,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NwK-xu-G1d">
                                                 <rect key="frame" x="187" y="0.0" width="187" height="31"/>
+                                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="gray" title="Brunch"/>
                                                 <connections>
@@ -169,6 +171,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwQ-ui-eZy">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="31"/>
+                                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="gray" title="Lunch"/>
                                                 <connections>
@@ -177,6 +180,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A73-y9-QfH">
                                                 <rect key="frame" x="187" y="0.0" width="187" height="31"/>
+                                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="gray" title="Dinner"/>
                                                 <connections>
@@ -201,6 +205,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSp-sp-Yzd">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="31"/>
+                                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="gray" title="Chinese"/>
                                                 <connections>
@@ -209,6 +214,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXo-4V-cDl">
                                                 <rect key="frame" x="187" y="0.0" width="187" height="31"/>
+                                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="gray" title="Mexican"/>
                                                 <connections>
@@ -222,6 +228,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l41-LA-QgZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="31"/>
+                                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="gray" title="American"/>
                                                 <connections>
@@ -230,6 +237,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71f-Ux-IkH">
                                                 <rect key="frame" x="187" y="0.0" width="187" height="31"/>
+                                                <color key="backgroundColor" systemColor="systemGray2Color"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="gray" title="bars"/>
                                                 <connections>
@@ -266,14 +274,6 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYe-ye-Ckd">
-                                <rect key="frame" x="249" y="472" width="115" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Update Filters"/>
-                                <connections>
-                                    <action selector="updateBtnClicked:" destination="wnd-gv-PQx" eventType="touchUpInside" id="6rn-6u-mhv"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="c8d-qb-ql5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -288,7 +288,6 @@
                             <constraint firstItem="Drw-cr-rgK" firstAttribute="centerX" secondItem="G3W-qm-dft" secondAttribute="centerX" id="LWF-5Q-QfV"/>
                             <constraint firstItem="Gej-G9-oGy" firstAttribute="leading" secondItem="c8d-qb-ql5" secondAttribute="leading" constant="20" id="MAU-4f-vDb"/>
                             <constraint firstItem="M9M-wB-Cbd" firstAttribute="centerX" secondItem="G3W-qm-dft" secondAttribute="centerX" id="NVh-gZ-92x"/>
-                            <constraint firstItem="yYe-ye-Ckd" firstAttribute="leading" secondItem="jrq-Nu-9af" secondAttribute="trailing" constant="-115" id="Ocy-ot-GE2"/>
                             <constraint firstItem="M9M-wB-Cbd" firstAttribute="leading" secondItem="c8d-qb-ql5" secondAttribute="leading" constant="50" id="Srh-Ts-jet"/>
                             <constraint firstItem="Gej-G9-oGy" firstAttribute="top" secondItem="4Yv-OH-RRR" secondAttribute="bottom" constant="30" id="VBE-sI-4wC"/>
                             <constraint firstItem="d7c-LW-KjK" firstAttribute="leading" secondItem="c8d-qb-ql5" secondAttribute="leading" constant="20" id="VP0-45-XYU"/>
@@ -298,7 +297,6 @@
                             <constraint firstItem="Drw-cr-rgK" firstAttribute="leading" secondItem="c8d-qb-ql5" secondAttribute="leading" constant="20" id="nvP-PD-RAo"/>
                             <constraint firstItem="VMV-M5-RjH" firstAttribute="centerX" secondItem="G3W-qm-dft" secondAttribute="centerX" id="o6C-95-RRn"/>
                             <constraint firstItem="M9M-wB-Cbd" firstAttribute="top" secondItem="hnF-eS-MP8" secondAttribute="bottom" constant="32.5" id="pbt-BM-yPq"/>
-                            <constraint firstItem="yYe-ye-Ckd" firstAttribute="top" secondItem="M9M-wB-Cbd" secondAttribute="bottom" constant="30" id="rVF-Db-g67"/>
                             <constraint firstItem="4Yv-OH-RRR" firstAttribute="top" secondItem="c8d-qb-ql5" secondAttribute="top" constant="10" id="wHw-ea-1bG"/>
                             <constraint firstItem="VMV-M5-RjH" firstAttribute="leading" secondItem="c8d-qb-ql5" secondAttribute="leading" constant="20" id="wv6-ul-lMR"/>
                         </constraints>
@@ -307,9 +305,6 @@
                         <imageReference key="image" image="slider.horizontal.3" catalog="system" symbolScale="default"/>
                         <imageReference key="selectedImage" image="slider.horizontal.3" catalog="system" symbolScale="default"/>
                     </tabBarItem>
-                    <connections>
-                        <outlet property="updateBtn" destination="yYe-ye-Ckd" id="NpW-ay-KhM"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gss-y2-jTD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1207,6 +1202,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

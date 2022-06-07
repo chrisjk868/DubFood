@@ -54,7 +54,7 @@ class YelpBusinessSearch {
             
             let lat_long = "latitude=\(self.latitude!)&longitude=\(self.longitude!)&limit=10"
             
-            if categories != nil {
+            if categories != [] {
                 var categoriesPath = "&categories="
                 var numCategories = categories!.count
                 for i in 0...numCategories - 1{
@@ -66,6 +66,8 @@ class YelpBusinessSearch {
                 }
                 print(categoriesPath)
                 return rootURL + path + lat_long + categoriesPath
+            } else {
+                
             }
             
             return rootURL + path + lat_long

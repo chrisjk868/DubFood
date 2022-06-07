@@ -20,39 +20,23 @@ class RecViewController: UIViewController {
         super.viewDidLoad()
         
         self.ExploreVC = self.tabBarController?.children[2].children[0] as! ExploreViewController
-        if ((categories?.isEmpty) != nil) {
-            updateBtn.isEnabled = false
-        } else {
-            updateBtn.isEnabled = true
-        }
 
         // Do any additional setup after loading the view.
     }
     
   
     @IBAction func buttonOnClick(_ sender: UIButton) {
-        print("hello world")
         print((sender.titleLabel?.text!)!)
+        
         if let index = categories?.firstIndex(of: (sender.titleLabel?.text!)!) {
             categories?.remove(at: index)
-            if ((categories?.isEmpty) != nil) {
-                updateBtn.isEnabled = false
-            } else {
-                updateBtn.isEnabled = true
-            }
+            sender.backgroundColor = UIColor.systemGray2
         } else {
             categories?.append("\((sender.titleLabel?.text!)!)")
-            updateBtn.isEnabled = true
+            sender.backgroundColor = UIColor.darkGray
         }
-        ExploreVC!.printFilters()
-    }
-    
-    @IBAction func updateBtnClicked(_ sender: UIButton) {
         ExploreVC!.filters = categories!
-        //ExploreVC.makeRequest(coordinates: ExploreVC.location)
-        tabBarController?.selectedIndex = 2
     }
-    
     
        
     /*
