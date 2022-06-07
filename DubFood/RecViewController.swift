@@ -10,11 +10,21 @@ import UIKit
 class RecViewController: UIViewController {
     
     public var categories : [String]? = []
+    var ExploreVC: ExploreViewController?
     
-    let ExploreVC = ExploreViewController()
+    @IBOutlet weak var updateBtn: UIButton!
+    //let ExploreVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "exploreRest") as! ExploreViewController
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.ExploreVC = self.tabBarController?.children[2].children[0] as! ExploreViewController
+        if ((categories?.isEmpty) != nil) {
+            updateBtn.isEnabled = false
+        } else {
+            updateBtn.isEnabled = true
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -23,15 +33,26 @@ class RecViewController: UIViewController {
     @IBAction func buttonOnClick(_ sender: UIButton) {
         print("hello world")
         print((sender.titleLabel?.text!)!)
-        categories?.append("\((sender.titleLabel?.text!)!)")
-        updateFilters()
-        ExploreVC.printFilters()
-
+        if let index = categories?.firstIndex(of: (sender.titleLabel?.text!)!) {
+            categories?.remove(at: index)
+            if ((categories?.isEmpty) != nil) {
+                updateBtn.isEnabled = false
+            } else {
+                updateBtn.isEnabled = true
+            }
+        } else {
+            categories?.append("\((sender.titleLabel?.text!)!)")
+            updateBtn.isEnabled = true
+        }
+        ExploreVC!.printFilters()
     }
     
-    func updateFilters() {
-        ExploreVC.filters = categories!
+    @IBAction func updateBtnClicked(_ sender: UIButton) {
+        ExploreVC!.filters = categories!
+        //ExploreVC.makeRequest(coordinates: ExploreVC.location)
+        tabBarController?.selectedIndex = 2
     }
+    
     
        
     /*

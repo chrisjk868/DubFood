@@ -32,6 +32,12 @@ class ExploreViewController: UIViewController {
         restaurants_view.dataSource = self
         makeRequest(coordinates: self.location)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("====================view about to appear========")
+        print(filters)
+        makeRequest(coordinates: location)
+    }
 
     func makeRequest(coordinates : (Double, Double)) {
         print("started making requests")
@@ -64,6 +70,7 @@ class ExploreViewController: UIViewController {
                     // Finished updateing business array
                     self.business_arr = value_arr
                     // Update table view
+                    print(self.restaurants_view)
                     self.restaurants_view.reloadData()
                 }
             } catch {
