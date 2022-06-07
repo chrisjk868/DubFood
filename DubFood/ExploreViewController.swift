@@ -28,18 +28,50 @@ class ExploreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        // Calling the Yelp API Business Endpoint
         restaurants_view.delegate = self
         restaurants_view.dataSource = self
+        
+        // Pulse View
+//        let pulsingView = PulsingView()
+//        pulsingView.center = CGPoint(x: self.view.frame.size.width  / 2, y: self.view.frame.size.height / 2)
+//        pulsingView.tag = 100
+//        view.addSubview(pulsingView)
+        
+        // Calling the Yelp API Business Endpoint
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//            // delay
+//            let pulseView = self.view.viewWithTag(100)
+//            pulsingView.removeFromSuperview()
+//            self.makeRequest(coordinates: self.location)
+//        }
+//        restaurants_view.delegate = self
+//        restaurants_view.dataSource = self
         makeRequest(coordinates: self.location)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
+        self.restaurants_view.isHidden = true
+        
+        // Pulse View
+        let pulsingView = PulsingView()
+        pulsingView.center = CGPoint(x: self.view.frame.size.width  / 2, y: self.view.frame.size.height / 2)
+        pulsingView.tag = 100
+        view.addSubview(pulsingView)
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            // delay
+//            let pulseView = self.view.viewWithTag(100)
+//            pulsingView.removeFromSuperview()
+//            self.makeRequest(coordinates: self.location)
+//        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             // delay
             print("2 sec delay")
+            let pulseView = self.view.viewWithTag(100)
+            pulseView?.removeFromSuperview()
+            self.restaurants_view.isHidden = false
             self.makeRequest(coordinates: self.location)
         }
         
