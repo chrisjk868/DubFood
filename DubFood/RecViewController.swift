@@ -8,18 +8,45 @@
 import UIKit
 
 class RecViewController: UIViewController {
-
+    
+    public var categories : [String]? = []
+    var ExploreVC: ExploreViewController?
+    
+    @IBOutlet weak var radiusSlider: UISlider!
+    
+    @IBOutlet weak var radiusLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.ExploreVC = self.tabBarController?.children[2].children[0] as! ExploreViewController
 
         // Do any additional setup after loading the view.
     }
     
-  
-    @IBAction func buttonOnClick(_ sender: Any) {
-        print("hello world")
+    @IBAction func radiusSliderChanged(_ sender: UISlider) {
+        var curr = Int(sender.value)
+        print("Slider value: \(curr)")
+        DispatchQueue.main.async {
+            self.radiusLabel.text = "Radius(\(curr) miles)"
+        }
+        ExploreVC!.radiusVal = String(curr * 1600)
     }
     
+    @IBAction func buttonOnClick(_ sender: UIButton) {
+        print((sender.titleLabel?.text!)!)
+        
+        if let index = categories?.firstIndex(of: (sender.titleLabel?.text!)!) {
+            categories?.remove(at: index)
+            sender.backgroundColor = UIColor.systemGray2
+        } else {
+            categories?.append("\((sender.titleLabel?.text!)!)")
+            sender.backgroundColor = UIColor.darkGray
+        }
+        ExploreVC!.filters = categories!
+    }
+    
+       
     /*
     // MARK: - Navigation
 

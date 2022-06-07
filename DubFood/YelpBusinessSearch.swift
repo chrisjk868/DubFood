@@ -54,7 +54,23 @@ class YelpBusinessSearch {
             
             let lat_long = "latitude=\(self.latitude!)&longitude=\(self.longitude!)&limit=10"
             
-            return rootURL + path + lat_long
+            let radiusPath = "&radius=\(radius!)"
+            
+            if categories != [] {
+                var categoriesPath = "&categories="
+                var numCategories = categories!.count
+                for i in 0...numCategories - 1{
+                    if i == 0 {
+                        categoriesPath = categoriesPath + "\(categories![i])"
+                    } else {
+                        categoriesPath = categoriesPath + "+\(categories![i])"
+                    }
+                }
+                return rootURL + path + lat_long + radiusPath + categoriesPath
+            }
+            
+            
+            return rootURL + path + lat_long + radiusPath
         } else {
             //searchByLocation()
             return ""
