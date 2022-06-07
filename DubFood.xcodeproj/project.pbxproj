@@ -98,6 +98,7 @@
 				D9169FDF284D84C1005EF471 /* TabBarViewController.swift */,
 				D9F10EDD2842EC3300A8E968 /* YelpBusinessSearch.swift */,
 				D9F10ED72841586400A8E968 /* OnBoardingViewController.swift */,
+				E3A3FB12284EA43900DA9EBA /* NewsFeedViewController.swift */,
 				D9F10EC3283DB7AD00A8E968 /* ExploreViewController.swift */,
 				D9BBC404284D4DA60036C6A8 /* RestaurantTableViewCell.swift */,
 				D9F10ED9284160C600A8E968 /* RecViewController.swift */,
@@ -114,7 +115,6 @@
 				D9F10EC8283DB7AE00A8E968 /* Assets.xcassets */,
 				D9508DE428485D3E003788F5 /* GoogleService-Info.plist */,
 				D9F10ECD283DB7AE00A8E968 /* Info.plist */,
-				E3A3FB12284EA43900DA9EBA /* NewsFeedViewController.swift */,
 			);
 			path = DubFood;
 			sourceTree = "<group>";
