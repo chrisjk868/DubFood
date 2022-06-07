@@ -57,7 +57,7 @@ class ExploreViewController: UIViewController {
         let test = YelpBusinessSearch(latitude: String(coordinates.0), longitude: String(coordinates.1), radius: radiusVal, categories: filters)
         let url : String = test.searchByLatLong()
         print(url)
-        var request = URLRequest(url: URL(string: url)!)
+        var request = URLRequest(url: URL(string: url) ?? URL(string: "https://api.yelp.com/v3/businesses/search?latitude=\(coordinates.0)&longitude=\(coordinates.1)")!)
         request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
 
@@ -120,7 +120,8 @@ extension ExploreViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = restaurants_view.dequeueReusableCell(withIdentifier: "restaurantCell", for: indexPath) as! RestaurantTableViewCell
         let restaurant = business_arr?[indexPath.row]
         let location_obj = restaurant!.value(forKey: "location") as! NSDictionary
-        let display_address = "\(location_obj.value(forKey: "address1") as! String), \(location_obj.value(forKey: "city") as! String), \(location_obj.value(forKey: "state") as! String)"
+        let display_address = "\(location_obj.value(forKey: "address1") as? String ?? ""), \(location_obj.value(forKey: "city") as! String), \(location_obj.value(forKey: "state") as! String)"
+        print(display_address)
         var priceString = "$$$"
         var priceLvl = priceString.count
         if restaurant?.value(forKey: "price") != nil {
