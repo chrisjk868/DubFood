@@ -11,7 +11,7 @@
                     "username": "TestUser",
                     "title": "TestPost",
                     "content": "TestContent",
-                    "post-rating": 5,
+                    "post-rating": "5",
                     "time": "497626515.185066"
                 }
             ]
