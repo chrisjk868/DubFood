@@ -54,6 +54,8 @@ class YelpBusinessSearch {
             
             let lat_long = "latitude=\(self.latitude!)&longitude=\(self.longitude!)&limit=10"
             
+            let radiusPath = "&radius=\(radius!)"
+            
             if categories != [] {
                 var categoriesPath = "&categories="
                 var numCategories = categories!.count
@@ -64,13 +66,11 @@ class YelpBusinessSearch {
                         categoriesPath = categoriesPath + "+\(categories![i])"
                     }
                 }
-                print(categoriesPath)
-                return rootURL + path + lat_long + categoriesPath
-            } else {
-                
+                return rootURL + path + lat_long + radiusPath + categoriesPath
             }
             
-            return rootURL + path + lat_long
+            
+            return rootURL + path + lat_long + radiusPath
         } else {
             //searchByLocation()
             return ""

@@ -12,10 +12,10 @@ class RecViewController: UIViewController {
     public var categories : [String]? = []
     var ExploreVC: ExploreViewController?
     
-    @IBOutlet weak var updateBtn: UIButton!
-    //let ExploreVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "exploreRest") as! ExploreViewController
+    @IBOutlet weak var radiusSlider: UISlider!
     
-
+    @IBOutlet weak var radiusLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +24,15 @@ class RecViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-  
+    @IBAction func radiusSliderChanged(_ sender: UISlider) {
+        var curr = Int(sender.value)
+        print("Slider value: \(curr)")
+        DispatchQueue.main.async {
+            self.radiusLabel.text = "Radius(\(curr) miles)"
+        }
+        ExploreVC!.radiusVal = String(curr * 1600)
+    }
+    
     @IBAction func buttonOnClick(_ sender: UIButton) {
         print((sender.titleLabel?.text!)!)
         

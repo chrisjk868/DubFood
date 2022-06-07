@@ -21,7 +21,8 @@ class ExploreViewController: UIViewController {
     var business_arr : [NSDictionary]?
     var location = (47.66263, -122.306852) // Replace with user coordinates
     var selected_business_id = ""
-    var filters :[String]? = [""]
+    var filters :[String]? = []
+    var radiusVal : String = "16090"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +37,13 @@ class ExploreViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         print("====================view about to appear========")
         print(filters)
+        print(radiusVal)
         makeRequest(coordinates: location)
     }
 
     func makeRequest(coordinates : (Double, Double)) {
         print("started making requests")
-        let test = YelpBusinessSearch(latitude: String(coordinates.0), longitude: String(coordinates.1), radius: "", categories: filters)
+        let test = YelpBusinessSearch(latitude: String(coordinates.0), longitude: String(coordinates.1), radius: radiusVal, categories: filters)
         let url : String = test.searchByLatLong()
         print(url)
         var request = URLRequest(url: URL(string: url)!)
@@ -103,8 +105,12 @@ extension ExploreViewController : UITableViewDelegate, UITableViewDataSource {
         let restaurant = business_arr?[indexPath.row]
         let location_obj = restaurant!.value(forKey: "location") as! NSDictionary
         let display_address = "\(location_obj.value(forKey: "address1") as! String), \(location_obj.value(forKey: "city") as! String), \(location_obj.value(forKey: "state") as! String)"
-        let priceString = restaurant?.value(forKey: "price") as! String
-        let priceLvl = priceString.count
+        var priceString = "$$$"
+        var priceLvl = priceString.count
+        if restaurant?.value(forKey: "price") != nil {
+            priceString = restaurant?.value(forKey: "price") as! String
+            priceLvl = priceString.count
+        }
         cell.restaurantImg.isDetails = false
         cell.restaurantImg.loadImage(url: URL(string: restaurant?.value(forKey: "image_url") as! String)!)
         cell.restaurantName.text = (restaurant?.value(forKey: "name") as! String)
