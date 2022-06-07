@@ -23,6 +23,7 @@ class ExploreViewController: UIViewController {
     var selected_business_id = ""
     var filters :[String]? = []
     var radiusVal : String = "16090"
+    var task : URLSessionDataTask?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,14 +64,17 @@ class ExploreViewController: UIViewController {
 
         var businessList: [String] = []
 
-        let task = URLSession.shared.dataTask(with: request) {
+        self.task = URLSession.shared.dataTask(with: request) {
             (data, response, error) in guard let data = data else {
                 print("data is nil")
                 return
             }
             do {
                 print("response: \((response! as! HTTPURLResponse).statusCode)")
-                print("API Calls Remaining: \((response! as! HTTPURLResponse).value(forHTTPHeaderField: "RateLimit-Remaining"))")
+                if (response! as! HTTPURLResponse).statusCode == 500 {
+                   
+                    self.task?.cancel()
+                }
                 if (response! as! HTTPURLResponse).statusCode == 200 {
                     let data = try JSONSerialization.jsonObject(with: data) as! NSDictionary
                     print("url: \(url)")
@@ -96,7 +100,7 @@ class ExploreViewController: UIViewController {
                 print("error: \(error)")
             }
         }
-        task.resume()
+        self.task?.resume()
     }
     
     func printFilters() {

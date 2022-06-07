@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zQF-jh-H19">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
@@ -1669,7 +1670,7 @@
             <point key="canvasLocation" x="2531.8840579710145" y="817.63392857142856"/>
         </scene>
     </scenes>
-    <color key="tintColor" systemColor="systemPurpleColor"/>
+    <color key="tintColor" red="0.2764402628" green="0.1831670702" blue="0.49414354560000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
         <image name="dollarsign.circle" catalog="system" width="128" height="121"/>
         <image name="fork.knife.circle.fill" catalog="system" width="128" height="121"/>
@@ -1697,9 +1698,6 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
