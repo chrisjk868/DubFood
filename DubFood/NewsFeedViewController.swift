@@ -24,7 +24,15 @@ class NewsFeedViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewLoadSetup()
+
+     }
+    
+    func viewLoadSetup(){
         getPosts { rest_arr in
             if rest_arr == nil {
                 print("POSTS RETURNED NIL")
@@ -51,7 +59,6 @@ class NewsFeedViewController: UIViewController {
             self.currentPosts = convertedArrayDict
             self.updatePostUI(self.sortDates())
         }
-        tableView.reloadData()
     }
     
     func sortDates() -> [NSDictionary]{
