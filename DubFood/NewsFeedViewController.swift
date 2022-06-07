@@ -30,12 +30,17 @@ class NewsFeedViewController: UIViewController {
                 print("POSTS RETURNED NIL")
                 return
             }
+            
             self.currentPosts = rest_arr!
+            self.sortDates()
             self.updatePostUI(self.currentPosts)
         }
+        tableView.reloadData()
     }
     
+    func sortDates(){
     
+    }
 
     func updatePostUI(_ rest_data: NSDictionary){
         let rest_array = rest_data.allValues as! [NSDictionary]
@@ -85,6 +90,14 @@ extension NewsFeedViewController : UITableViewDataSource, UITableViewDelegate {
         cell.postContent.text = postsArr![indexPath.row]["content"] as? String
         print(Int(postsArr![indexPath.row]["post-rating"]! as! String))
         cell.rating = Int(postsArr![indexPath.row]["post-rating"]! as! String)!
+        cell.dateTime.text = NSDate(timeIntervalSinceReferenceDate: Double(postsArr![indexPath.row]["time"]! as! String)!).description
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yy HH:mm"
+        let formattedDate = formatter.string(from: NSDate(timeIntervalSinceReferenceDate: Double(postsArr![indexPath.row]["time"]! as! String)!) as Date)
+        
+        cell.dateTime.text = formattedDate
+        
         cell.updateRating()
         cell.selectionStyle = .none
         return cell

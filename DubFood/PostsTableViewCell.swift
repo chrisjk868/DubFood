@@ -16,6 +16,7 @@ class PostsTableViewCell: UITableViewCell {
     @IBOutlet weak var postContent: UILabel!
     @IBOutlet weak var postRating: UIStackView!
     @IBOutlet weak var postTime: UILabel!
+    @IBOutlet weak var dateTime: UILabel!
     
     var rating = 0
     
