@@ -13,7 +13,6 @@ class NewPostViewController: UIViewController {
 
     @IBOutlet weak var postTitle: UITextField!
     @IBOutlet weak var postContentTxtField: UITextField!
-    @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var postBtn: UIButton!
     @IBOutlet weak var load_spinner: UIActivityIndicatorView!
     @IBOutlet weak var starBtnOne: UIButton!

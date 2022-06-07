@@ -287,11 +287,17 @@ extension BusinessDetailsViewController : UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
         let cell = usr_posts.dequeueReusableCell(withIdentifier: "userPostCell") as! PostsTableViewCell
         cell.username.text = curr_posts![indexPath.row]["username"]
         cell.postTitle.text = curr_posts![indexPath.row]["title"]
         cell.postContent.text = curr_posts![indexPath.row]["content"]
-        print()
+        do {
+            cell.postTime.text = dateFormatter.string(from: NSDate(timeIntervalSinceReferenceDate: try Double(curr_posts![indexPath.row]["time"]!, format: .number)) as Date)
+        } catch {
+            print(error.localizedDescription)
+        }
         cell.rating = Int(curr_posts![indexPath.row]["post-rating"]!)!
         cell.updateRating()
         cell.selectionStyle = .none
