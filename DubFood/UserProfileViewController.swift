@@ -21,13 +21,24 @@ class UserProfileViewController: UIViewController {
     
     var userInfo : [UserData] = []
     
-
+    var userSettingsVC : UserProfileViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.userSettingsVC = self.tabBarController?.children[3].children[0] as! UserProfileViewController
+
+        
         getUserInfo()
         // Do any additional setup after loading the view.
+    }
+    @IBAction func ChangeProfileSettingsBtn(_ sender: Any) {
+        // instantiate the change profile settings vc
+        
+        let changeSettingsVC = storyboard?.instantiateViewController(identifier: "ChangeProfileSettingsVC") as! ChangeUserProfileSettingsViewController
+        //let changeSettingsVC = ChangeUserProfileSettingsViewController()
+        self.navigationController?.pushViewController(changeSettingsVC, animated: true)
+        
     }
     
     func getUserInfo() {

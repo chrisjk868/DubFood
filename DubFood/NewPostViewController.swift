@@ -31,6 +31,12 @@ class NewPostViewController: UIViewController {
     var db : FirebaseInterface?
     var user_rating = 0
     
+    var userInfo : [UserData] = []
+    
+    struct UserData: Codable {
+        let username, email, university: String
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.load_spinner.isHidden = true
@@ -44,6 +50,18 @@ class NewPostViewController: UIViewController {
         print(self.business_id)
         print(self.business_img)
         print(self.rating)
+        
+        if let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+             let pathWithFilename = documentDirectory.appendingPathComponent("userInfo.json")
+             do {
+                 let data = try Data(contentsOf: pathWithFilename)
+                 let info = try JSONDecoder().decode(UserData.self, from: data)
+                 self.userInfo = [info]
+                 self.curr_user = self.userInfo[0].username
+             } catch {
+                 print("There was an error getting user data from the local file: \(error)")
+             }
+         }
     }
     
     override open var shouldAutorotate: Bool {
