@@ -572,6 +572,9 @@
                     <tabBarItem key="tabBarItem" title="News Feed" selectedImage="newspaper" catalog="system" id="vZ3-zC-TMS">
                         <imageReference key="image" image="newspaper" catalog="system" symbolScale="default"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="tableView" destination="yTX-ZO-D6z" id="CHW-i9-EvQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zui-T3-QGx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
