@@ -13,6 +13,7 @@
 		9DF6BEAC284951D500DD1D55 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6BEAB284951D500DD1D55 /* NewPostViewController.swift */; };
 		9DF6BEAE2849542800DD1D55 /* BusinessDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6BEAD2849542800DD1D55 /* BusinessDetailsViewController.swift */; };
 		9DF6BEB02849543C00DD1D55 /* BusinessDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6BEAF2849543C00DD1D55 /* BusinessDecode.swift */; };
+		D900E54E28500355000BD206 /* PulsingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D900E54D28500355000BD206 /* PulsingView.swift */; };
 		D9169FE0284D84C1005EF471 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9169FDF284D84C1005EF471 /* TabBarViewController.swift */; };
 		D9508DE528485D3E003788F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9508DE428485D3E003788F5 /* GoogleService-Info.plist */; };
 		D9508DE7284AFB35003788F5 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9508DE6284AFB35003788F5 /* ImageCollectionViewCell.swift */; };
@@ -41,6 +42,7 @@
 		9DF6BEAB284951D500DD1D55 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		9DF6BEAD2849542800DD1D55 /* BusinessDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDetailsViewController.swift; sourceTree = "<group>"; };
 		9DF6BEAF2849543C00DD1D55 /* BusinessDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDecode.swift; sourceTree = "<group>"; };
+		D900E54D28500355000BD206 /* PulsingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingView.swift; sourceTree = "<group>"; };
 		D9169FDF284D84C1005EF471 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D9508DE428485D3E003788F5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D9508DE6284AFB35003788F5 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				D9F10EC3283DB7AD00A8E968 /* ExploreViewController.swift */,
 				D9BBC404284D4DA60036C6A8 /* RestaurantTableViewCell.swift */,
 				D9F10ED9284160C600A8E968 /* RecViewController.swift */,
+				D900E54D28500355000BD206 /* PulsingView.swift */,
 				9DF6BEAD2849542800DD1D55 /* BusinessDetailsViewController.swift */,
 				D9BBC402284C70640036C6A8 /* PostsTableViewCell.swift */,
 				D9508DE6284AFB35003788F5 /* ImageCollectionViewCell.swift */,
@@ -210,6 +213,7 @@
 				D9F10EDA284160C600A8E968 /* RecViewController.swift in Sources */,
 				9DF6BEAE2849542800DD1D55 /* BusinessDetailsViewController.swift in Sources */,
 				D9F10EC0283DB7AD00A8E968 /* AppDelegate.swift in Sources */,
+				D900E54E28500355000BD206 /* PulsingView.swift in Sources */,
 				D9508DE9284B0A1B003788F5 /* BusinessDetailsImageView.swift in Sources */,
 				850A5CE42846913200065BD3 /* User.swift in Sources */,
 				E36F85072846B18500F18C4C /* FirebaseInterface.swift in Sources */,
@@ -366,7 +370,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YLC6VMTL46;
+				DEVELOPMENT_TEAM = GJC6R3XAXW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DubFood/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -394,7 +398,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YLC6VMTL46;
+				DEVELOPMENT_TEAM = GJC6R3XAXW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DubFood/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

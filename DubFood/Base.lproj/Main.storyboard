@@ -950,6 +950,7 @@
                             <constraint firstItem="wZO-fM-AZB" firstAttribute="centerX" secondItem="wGC-Kr-tdt" secondAttribute="centerX" id="aS2-sx-p7J"/>
                             <constraint firstItem="ngo-42-51d" firstAttribute="leading" secondItem="bZ0-qE-ijK" secondAttribute="leading" constant="40" id="an8-Tv-kde"/>
                             <constraint firstItem="Vxg-Sd-NC7" firstAttribute="top" secondItem="7ZC-s6-RV6" secondAttribute="bottom" constant="20" id="hHz-nc-Syb"/>
+                            <constraint firstItem="bZ0-qE-ijK" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yxO-vS-5CF" secondAttribute="bottom" id="hKs-EF-sU3"/>
                             <constraint firstItem="bZ0-qE-ijK" firstAttribute="trailing" secondItem="Bep-Vn-Qwa" secondAttribute="trailing" constant="40" id="xeT-bv-P5L"/>
                             <constraint firstItem="MBN-Tb-VRz" firstAttribute="top" secondItem="bZ0-qE-ijK" secondAttribute="top" constant="10" id="zWo-fr-Kdu"/>
                         </constraints>
@@ -1040,9 +1041,6 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LwO-Vg-MfM">
                                         <rect key="frame" x="50" y="0.0" width="300" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="LzV-rG-pRM"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1060,9 +1058,6 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0c-Sx-xog">
                                         <rect key="frame" x="50" y="0.0" width="300" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="ne9-PO-5lb"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
