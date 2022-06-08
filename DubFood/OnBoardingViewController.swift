@@ -22,10 +22,28 @@ class OnBoardingViewController: UIViewController, CLLocationManagerDelegate {
 
     var selectedUniversity = "University of Washington"
 
+    struct AppUtility {
 
+        static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+        
+            if let delegate = UIApplication.shared.delegate as? AppDelegate {
+                delegate.orientationLock = orientation
+            }
+        }
+
+        /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
+        static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+       
+            self.lockOrientation(orientation)
+        
+            UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+            UINavigationController.attemptRotationToDeviceOrientation()
+        }
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         university.delegate = self
         university.dataSource = self
         
@@ -90,14 +108,27 @@ class OnBoardingViewController: UIViewController, CLLocationManagerDelegate {
                     default:
                         return
                 }
-                if status == .authorizedAlways || status == .authorizedWhenInUse {
+                if status == .authorizedAlways || status == .authorizedWhenInUse || status == .denied{
                     print("================broken==================")
+                    if status == .denied {
+                        self.lat = 47.655548
+                        self.long = -122.303200
+                    }
                     break
                 }
             }
         }
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+       super.viewWillAppear(animated)
+       
+       AppUtility.lockOrientation(.portrait)
+       // Or to rotate and lock
+       // AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+       
+   }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {

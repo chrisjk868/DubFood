@@ -37,6 +37,26 @@ class NewPostViewController: UIViewController {
         let username, email, university: String
     }
     
+    struct AppUtility {
+
+        static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+        
+            if let delegate = UIApplication.shared.delegate as? AppDelegate {
+                delegate.orientationLock = orientation
+            }
+        }
+
+        /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
+        static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+       
+            self.lockOrientation(orientation)
+        
+            UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+            UINavigationController.attemptRotationToDeviceOrientation()
+        }
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.load_spinner.isHidden = true
@@ -66,8 +86,9 @@ class NewPostViewController: UIViewController {
         
     }
     
-    override open var shouldAutorotate: Bool {
-            return false
+    override func viewWillAppear(_ animated: Bool) {
+        AppUtility.lockOrientation(.portrait)
+        
     }
     
     func writePostToDB() {

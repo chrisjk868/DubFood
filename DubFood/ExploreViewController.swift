@@ -25,6 +25,26 @@ class ExploreViewController: UIViewController {
     var radiusVal : String = "16090"
     var task : URLSessionDataTask?
     
+    struct AppUtility {
+
+        static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+        
+            if let delegate = UIApplication.shared.delegate as? AppDelegate {
+                delegate.orientationLock = orientation
+            }
+        }
+
+        /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
+        static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+       
+            self.lockOrientation(orientation)
+        
+            UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+            UINavigationController.attemptRotationToDeviceOrientation()
+        }
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -50,7 +70,7 @@ class ExploreViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        AppUtility.lockOrientation(.portrait)
         self.restaurants_view.isHidden = true
         
         // Pulse View

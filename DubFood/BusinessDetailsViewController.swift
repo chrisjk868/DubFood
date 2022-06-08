@@ -44,9 +44,30 @@ class BusinessDetailsViewController: UIViewController {
     
     // posts data
     var curr_posts : [[String : String]]? = []
+    
+    struct AppUtility {
+
+        static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+        
+            if let delegate = UIApplication.shared.delegate as? AppDelegate {
+                delegate.orientationLock = orientation
+            }
+        }
+
+        /// OPTIONAL Added method to adjust lock and rotate to the desired orientation
+        static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+       
+            self.lockOrientation(orientation)
+        
+            UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+            UINavigationController.attemptRotationToDeviceOrientation()
+        }
+
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
         self.usr_posts.delegate = self
         self.usr_posts.dataSource = self
         self.db = FirebaseInterface()
@@ -70,6 +91,7 @@ class BusinessDetailsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        AppUtility.lockOrientation(.portrait)
         getPosts(id: self.business_id!) { postsArr, response in
             if postsArr == nil {
                 print(response)
@@ -79,8 +101,11 @@ class BusinessDetailsViewController: UIViewController {
             print(response)
             
             self.curr_posts = postsArr as? [[String : String]]
-            self.calculateUserAverage(self.curr_posts!)
-            self.usr_posts.reloadData()
+            DispatchQueue.main.async {
+                print(self.curr_posts)
+                self.calculateUserAverage(self.curr_posts!)
+                self.usr_posts.reloadData()
+            }
         }
         // updateRating(rating: self.calculateUserAverage(self.curr_posts!), starStackView: userRating)
         
@@ -102,9 +127,9 @@ class BusinessDetailsViewController: UIViewController {
         return average
     }
     
-    override open var shouldAutorotate: Bool {
-            return false
-    }
+//    override open var shouldAutorotate: Bool {
+//            return false
+//    }
     
     func makeDetailsRequest() {
         var request = URLRequest(url: URL(string: self.business_id_url + self.business_id!)!)

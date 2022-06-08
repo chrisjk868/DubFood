@@ -511,10 +511,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DBf-IZ-RZe">
-                                <rect key="frame" x="88" y="149.5" width="238" height="117"/>
+                                <rect key="frame" x="147" y="149.5" width="120" height="117"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="4Gy-fN-GRW"/>
                                     <constraint firstAttribute="height" constant="120" id="Jrh-Lg-kAZ"/>
+                                    <constraint firstAttribute="width" constant="120" id="MxM-GM-qfI"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -593,9 +594,8 @@
                         <viewLayoutGuide key="safeArea" id="3cS-8H-FCO"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="DBf-IZ-RZe" firstAttribute="leading" secondItem="3cS-8H-FCO" secondAttribute="leading" constant="88" id="GYM-rV-yiu"/>
-                            <constraint firstItem="3cS-8H-FCO" firstAttribute="trailing" secondItem="DBf-IZ-RZe" secondAttribute="trailing" constant="88" id="H5l-Zj-xJX"/>
                             <constraint firstItem="Frq-je-LnB" firstAttribute="leading" secondItem="3cS-8H-FCO" secondAttribute="leading" constant="20" id="Mo3-gg-XIY"/>
+                            <constraint firstItem="DBf-IZ-RZe" firstAttribute="centerX" secondItem="iOK-wo-WsA" secondAttribute="centerX" id="YCN-tj-eXo"/>
                             <constraint firstItem="lEf-Ub-hbv" firstAttribute="top" secondItem="DBf-IZ-RZe" secondAttribute="bottom" constant="68" id="h1S-Vk-h7V"/>
                             <constraint firstItem="DBf-IZ-RZe" firstAttribute="top" secondItem="4dO-Yb-uJh" secondAttribute="bottom" constant="20" id="hSK-7F-rlr"/>
                             <constraint firstItem="lEf-Ub-hbv" firstAttribute="centerX" secondItem="iOK-wo-WsA" secondAttribute="centerX" id="o1q-F5-7ab"/>
