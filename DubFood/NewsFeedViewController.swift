@@ -47,6 +47,7 @@ class NewsFeedViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("hello world")
         viewLoadSetup()
         super.viewWillAppear(animated)
         
